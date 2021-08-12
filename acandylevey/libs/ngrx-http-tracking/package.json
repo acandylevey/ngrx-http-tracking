@@ -1,9 +1,10 @@
 {
   "name": "@acandylevey/ngrx-http-tracking",
-  "version": "0.0.2",
+  "version": "12.1.0",
   "license": "MIT",
   "author": {
-    "name": "Alexander Candy-Levey"
+    "name": "Alexander Candy-Levey",
+    "url": "https://acandylevey.github.io/ngrx-http-tracking/"
   },
   "repository": {
     "url": "https://github.com/acandylevey/ngrx-http-tracking"
