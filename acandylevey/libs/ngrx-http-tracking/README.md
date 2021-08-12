@@ -3,6 +3,12 @@ ngrx-http-tracking
 
 This NGRX library is aims to slot into your pre-existing NGRX stores to reduce the amount of boiler plate code you need to write and to make handling the loading, success and error states of HTTP Requests significantly easier.
 
+Installing
+
+````
+npm i @acandylevey/ngrx-http-tracking
+````
+
 Importing the module
 
 

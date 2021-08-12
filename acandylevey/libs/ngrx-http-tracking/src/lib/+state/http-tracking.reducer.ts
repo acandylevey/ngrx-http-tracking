@@ -1,0 +1,49 @@
+import * as HttpTrackingActions from './http-tracking.actions';
+
+import { EntityAdapter, EntityState, createEntityAdapter } from '@ngrx/entity';
+import { HttpTrackingEntity } from '../model/http-tracking-entity.model';
+import { LoadingState } from '../model/loading-sate.enum';
+import { createReducer, on } from '@ngrx/store';
+import { isDefined } from '../function/is-defined.function';
+
+export const HTTP_TRACKING_FEATURE_KEY = 'httpTracking';
+
+export type State = EntityState<HttpTrackingEntity>;
+
+export interface HttpTrackingPartialState {
+  readonly [HTTP_TRACKING_FEATURE_KEY]: State;
+}
+
+export const httpTrackingAdapter: EntityAdapter<HttpTrackingEntity> =
+  createEntityAdapter<HttpTrackingEntity>({
+    selectId: (x) => x.action,
+  });
+
+export const initialState: State = httpTrackingAdapter.getInitialState();
+
+export const httpTrackingReducer = createReducer(
+  initialState,
+  on(
+    HttpTrackingActions.trackHttpRequest,
+    (state, { action, httpStatus, tags }) =>
+      httpTrackingAdapter.upsertOne({ action, httpStatus, tags }, state)
+  ),
+  on(HttpTrackingActions.clearGloballyHandledErrors, (state) => {
+    const actionsToUpdate = (<string[]>state.ids)
+      .map((id) => state.entities[id])
+      .filter(
+        (httpTracking) =>
+          !!httpTracking &&
+          isDefined((<Error>httpTracking?.httpStatus)?.message) &&
+          httpTracking.tags.includes('global')
+      )
+      .map(
+        (tracking) =>
+          <HttpTrackingEntity>{
+            ...tracking,
+            httpStatus: LoadingState.INIT,
+          }
+      );
+    return httpTrackingAdapter.upsertMany(actionsToUpdate, state);
+  })
+);

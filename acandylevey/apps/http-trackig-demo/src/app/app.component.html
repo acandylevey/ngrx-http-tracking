@@ -1,0 +1,137 @@
+<header class="flex">
+  <h1>NgRx Http Tracking Demo</h1>
+  <a href="https://github.com/acandylevey/ngrx-http-tracking" target="_blank"
+    ><img
+      src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+      width="24px"
+      height="24px"
+    />
+    Github</a
+  >
+</header>
+<main>
+  <div>
+    <h2>Global Statuses</h2>
+    <p>
+      The global status of actions with the same tag can be tracked and handled
+      in a single location. Useful for showing a global loading spinner or
+      automatically handling errors (such as showing a modal).
+    </p>
+    <pre>
+isLoading: {{ global.loading$ | async }}
+globalErrors: {{ global.errors$ | async | json }}</pre
+    >
+  </div>
+  <div class="flex-row">
+    <div class="left-label">
+      <h2>Basic</h2>
+      <p>Sending a HTTP Request, and showing the result</p>
+      <button
+        (click)="fetchAnimals()"
+        class="
+          mdl-button mdl-js-button
+          mdl-button--raised
+          mdl-js-ripple-effect
+          mdl-button--primary
+        "
+      >
+        Fetch Animals
+      </button>
+      <button
+        (click)="clearAnimals()"
+        class="
+          mdl-button mdl-js-button
+          mdl-button--raised
+          mdl-js-ripple-effect
+          mdl-button--primary
+        "
+      >
+        Clear Entities
+      </button>
+    </div>
+    <div>
+      <pre>{{ animals.entities$ | async | json }}</pre>
+    </div>
+  </div>
+  <div class="flex-row">
+    <div class="left-label">
+      <h2>Accessing Tracker</h2>
+      <p>
+        The component is able to access all of the data about the action being
+        tracked
+      </p>
+      <button
+        (click)="fetchBooks()"
+        class="
+          mdl-button mdl-js-button
+          mdl-button--raised
+          mdl-js-ripple-effect
+          mdl-button--primary
+        "
+      >
+        Fetch Books
+      </button>
+      <button
+        (click)="clearBooks()"
+        class="
+          mdl-button mdl-js-button
+          mdl-button--raised
+          mdl-js-ripple-effect
+          mdl-button--primary
+        "
+      >
+        Clear Entities
+      </button>
+    </div>
+    <div>
+      <pre>
+isLoaded: {{ books.isLoaded$ | async }}
+isLoading: {{ books.isLoading$ | async }}
+trackingData: {{ books.trackingData$ | async | json }}</pre
+      >
+      <pre>{{ books.entities$ | async | json }}</pre>
+    </div>
+  </div>
+
+  <div class="flex-row">
+    <div class="left-label">
+      <h2>Chaining Requests</h2>
+      <p>
+        Waiting on the successful outcome of one request before doing another
+        request
+      </p>
+      <button
+        (click)="fetchChain()"
+        class="
+          mdl-button mdl-js-button
+          mdl-button--raised
+          mdl-js-ripple-effect
+          mdl-button--primary
+        "
+      >
+        Fetch Chain
+      </button>
+      <button
+        (click)="clearChain()"
+        class="
+          mdl-button mdl-js-button
+          mdl-button--raised
+          mdl-js-ripple-effect
+          mdl-button--primary
+        "
+      >
+        Clear Entities
+      </button>
+    </div>
+    <div>
+      <p>
+        By using the getResolved or the getMultiResolved HTTP request depdency
+        chains can easily be managed.
+      </p>
+      <pre>
+businessStatus: {{ chained.businessStatus$ | async }}
+calendarStatus: {{ chained.calendarStatus$ | async }}</pre
+      >
+    </div>
+  </div>
+</main>

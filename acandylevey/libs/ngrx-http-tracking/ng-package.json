@@ -1,0 +1,7 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/libs/ngrx-http-tracking",
+  "lib": {
+    "entryFile": "src/index.ts"
+  }
+}

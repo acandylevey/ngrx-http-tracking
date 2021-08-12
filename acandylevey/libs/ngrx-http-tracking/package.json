@@ -1,0 +1,18 @@
+{
+  "name": "@acandylevey/ngrx-http-tracking",
+  "version": "0.0.2",
+  "license": "MIT",
+  "author": {
+    "name": "Alexander Candy-Levey"
+  },
+  "repository": {
+    "url": "https://github.com/acandylevey/ngrx-http-tracking"
+  },
+  "peerDependencies": {
+    "@angular/common": "^12.1.0",
+    "@angular/core": "^12.1.0"
+  },
+  "dependencies": {
+    "tslib": "^2.2.0"
+  }
+}
