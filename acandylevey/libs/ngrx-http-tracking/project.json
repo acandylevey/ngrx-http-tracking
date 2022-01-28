@@ -1,0 +1,50 @@
+{
+  "projectType": "library",
+  "root": "libs/ngrx-http-tracking",
+  "sourceRoot": "libs/ngrx-http-tracking/src",
+  "prefix": "acandylevey",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/ngrx-http-tracking"],
+      "options": {
+        "project": "libs/ngrx-http-tracking/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/ngrx-http-tracking/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/ngrx-http-tracking/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/ngrx-http-tracking"],
+      "options": {
+        "jestConfig": "libs/ngrx-http-tracking/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/ngrx-http-tracking/src/**/*.ts",
+          "libs/ngrx-http-tracking/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public",
+        "buildTarget": "production"
+      }
+    }
+  },
+  "tags": []
+}
