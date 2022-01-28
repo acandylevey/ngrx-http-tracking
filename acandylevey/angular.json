@@ -4,37 +4,5 @@
     "http-trackig-demo": "apps\\http-trackig-demo",
     "http-trackig-demo-e2e": "apps\\http-trackig-demo-e2e",
     "ngrx-http-tracking": "libs\\ngrx-http-tracking"
-  },
-  "cli": {
-    "analytics": "73e67427-99ab-4907-931e-689e0d60ce7f",
-    "defaultCollection": "@nrwl/angular"
-  },
-  "generators": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/angular:application": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
-    }
-  },
-  "defaultProject": "http-trackig-demo"
+  }
 }

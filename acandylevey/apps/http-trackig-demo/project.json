@@ -79,7 +79,8 @@
           "apps/http-trackig-demo/src/**/*.ts",
           "apps/http-trackig-demo/src/**/*.html"
         ]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",

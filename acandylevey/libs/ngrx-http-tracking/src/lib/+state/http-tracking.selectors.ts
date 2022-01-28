@@ -8,7 +8,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { isDefined } from '../function/is-defined.function';
 import { LoadingState } from '../model/loading-sate.enum';
 
-const selectFeature = createFeatureSelector<HttpTrackingPartialState, State>(
+const selectFeature = createFeatureSelector< State>(
   HTTP_TRACKING_FEATURE_KEY
 );
 

@@ -3,11 +3,11 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { Action } from '@ngrx/store';
 import { provideMockStore } from '@ngrx/store/testing';
 import { NxModule } from '@nrwl/angular';
-import { hot } from '@nrwl/angular/testing';
 import { Observable } from 'rxjs';
 
 import * as CalendarActions from './calendar.actions';
 import { CalendarEffects } from './calendar.effects';
+import { hot } from 'jasmine-marbles';
 
 describe('CalendarEffects', () => {
   let actions: Observable<Action>;

@@ -35,7 +35,8 @@
           "libs/ngrx-http-tracking/src/**/*.ts",
           "libs/ngrx-http-tracking/src/**/*.html"
         ]
-      }
+      },
+      "outputs": ["{options.outputFile}"]
     },
     "deploy": {
       "executor": "ngx-deploy-npm:deploy",

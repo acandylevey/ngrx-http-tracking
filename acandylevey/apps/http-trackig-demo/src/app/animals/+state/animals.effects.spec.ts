@@ -3,11 +3,11 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { Action } from '@ngrx/store';
 import { provideMockStore } from '@ngrx/store/testing';
 import { NxModule } from '@nrwl/angular';
-import { hot } from '@nrwl/angular/testing';
 import { Observable } from 'rxjs';
 
 import * as AnimalsActions from './animals.actions';
 import { AnimalsEffects } from './animals.effects';
+import { hot } from 'jasmine-marbles';
 
 describe('AnimalsEffects', () => {
   let actions: Observable<Action>;
