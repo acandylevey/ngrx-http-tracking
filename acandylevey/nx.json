@@ -26,16 +26,5 @@
       }
     ]
   },
-  "projects": {
-    "http-trackig-demo": {
-      "tags": []
-    },
-    "http-trackig-demo-e2e": {
-      "tags": [],
-      "implicitDependencies": ["http-trackig-demo"]
-    },
-    "ngrx-http-tracking": {
-      "tags": []
-    }
-  }
+  "projects": {}
 }
