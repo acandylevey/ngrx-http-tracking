@@ -27,7 +27,7 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "publish:ngrx-hhtp-tracking": "npm publish libs/ngrx-http-tracking"
+    "publish:ngrx-http-tracking": "npm publish libs/ngrx-http-tracking"
   },
   "private": true,
   "dependencies": {
