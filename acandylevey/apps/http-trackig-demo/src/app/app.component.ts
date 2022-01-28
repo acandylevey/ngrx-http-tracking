@@ -1,16 +1,13 @@
 import { HttpTrackingFacade } from '@acandylevey/ngrx-http-tracking';
 import { Component } from '@angular/core';
-import { delay, filter, map, switchMap } from 'rxjs/operators';
-import * as AnimalsActions from './animals/+state/animals.actions';
-import * as BooksActions from './books/+state/books.actions';
-import * as CalendarActions from './calendar/+state/calendar.actions';
-import * as BusinessActions from './business/+state/business.actions';
+import { filter, map, switchMap } from 'rxjs/operators';
 import { AnimalsFacade } from './animals/+state/animals.facade';
+import * as BooksActions from './books/+state/books.actions';
 import { BooksFacade } from './books/+state/books.facade';
+import * as BusinessActions from './business/+state/business.actions';
 import { BusinessFacade } from './business/+state/business.facade';
+import * as CalendarActions from './calendar/+state/calendar.actions';
 import { CalendarFacade } from './calendar/+state/calendar.facade';
-import { RecursiveTemplateAstVisitor } from '@angular/compiler';
-import { resultMemoize } from '@ngrx/store';
 
 @Component({
   selector: 'acandylevey-root',
