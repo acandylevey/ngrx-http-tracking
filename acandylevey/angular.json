@@ -1,17 +1,15 @@
 {
-  "version": 1,
+  "version": 2,
   "projects": {
     "http-trackig-demo": {
       "projectType": "application",
       "root": "apps/http-trackig-demo",
       "sourceRoot": "apps/http-trackig-demo/src",
       "prefix": "acandylevey",
-      "architect": {
+      "targets": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "executor": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/http-trackig-demo",
             "index": "apps/http-trackig-demo/src/index.html",
@@ -23,9 +21,7 @@
               "apps/http-trackig-demo/src/favicon.ico",
               "apps/http-trackig-demo/src/assets"
             ],
-            "styles": [
-              "apps/http-trackig-demo/src/styles.scss"
-            ],
+            "styles": ["apps/http-trackig-demo/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -62,7 +58,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "executor": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "browserTarget": "http-trackig-demo:build:production"
@@ -74,13 +70,13 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "executor": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "http-trackig-demo:build"
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "apps/http-trackig-demo/src/**/*.ts",
@@ -89,10 +85,8 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/http-trackig-demo"
-          ],
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/http-trackig-demo"],
           "options": {
             "jestConfig": "apps/http-trackig-demo/jest.config.js",
             "passWithNoTests": true
@@ -104,9 +98,9 @@
       "root": "apps/http-trackig-demo-e2e",
       "sourceRoot": "apps/http-trackig-demo-e2e/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+          "executor": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/http-trackig-demo-e2e/cypress.json",
             "tsConfig": "apps/http-trackig-demo-e2e/tsconfig.e2e.json",
@@ -119,11 +113,9 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/http-trackig-demo-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/http-trackig-demo-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -133,12 +125,10 @@
       "root": "libs/ngrx-http-tracking",
       "sourceRoot": "libs/ngrx-http-tracking/src",
       "prefix": "acandylevey",
-      "architect": {
+      "targets": {
         "build": {
-          "builder": "@nrwl/angular:package",
-          "outputs": [
-            "dist/libs/ngrx-http-tracking"
-          ],
+          "executor": "@nrwl/angular:package",
+          "outputs": ["dist/libs/ngrx-http-tracking"],
           "options": {
             "project": "libs/ngrx-http-tracking/ng-package.json"
           },
@@ -153,17 +143,15 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/ngrx-http-tracking"
-          ],
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ngrx-http-tracking"],
           "options": {
             "jestConfig": "libs/ngrx-http-tracking/jest.config.js",
             "passWithNoTests": true
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/ngrx-http-tracking/src/**/*.ts",
@@ -172,7 +160,7 @@
           }
         },
         "deploy": {
-          "builder": "ngx-deploy-npm:deploy",
+          "executor": "ngx-deploy-npm:deploy",
           "options": {
             "access": "public",
             "buildTarget": "production"
@@ -185,7 +173,7 @@
     "analytics": "73e67427-99ab-4907-931e-689e0d60ce7f",
     "defaultCollection": "@nrwl/angular"
   },
-  "schematics": {
+  "generators": {
     "@nrwl/angular": {
       "application": {
         "linter": "eslint"

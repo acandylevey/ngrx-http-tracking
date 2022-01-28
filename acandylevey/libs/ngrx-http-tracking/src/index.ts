@@ -1,4 +1,4 @@
-export * from './lib/+state/http-tracking.facade';;
+export * from './lib/+state/http-tracking.facade';
 export * from './lib/+state/http-tracking.selectors';
 export * from './lib/+state/http-tracking.reducer';
 export * from './lib/+state/http-tracking.actions';
