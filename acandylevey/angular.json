@@ -1,8 +1,8 @@
 {
   "version": 2,
   "projects": {
-    "http-trackig-demo": "apps\\http-trackig-demo",
-    "http-trackig-demo-e2e": "apps\\http-trackig-demo-e2e",
-    "ngrx-http-tracking": "libs\\ngrx-http-tracking"
+    "http-trackig-demo": "apps/http-trackig-demo",
+    "http-trackig-demo-e2e": "apps/http-trackig-demo-e2e",
+    "ngrx-http-tracking": "libs/ngrx-http-tracking"
   }
 }

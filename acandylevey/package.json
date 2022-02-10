@@ -1,6 +1,6 @@
 {
   "name": "acandylevey",
-  "version": "13.1.4",
+  "version": "13.1.5",
   "license": "MIT",
   "scripts": {
     "ng": "nx",
@@ -8,7 +8,6 @@
     "nx": "nx",
     "start": "ng serve",
     "build": "ng build",
-    "build:docs": "ng build --prod --outputPath=../docs --baseHref='https://acandylevey.github.io/ngrx-http-tracking/'",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
@@ -27,7 +26,9 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "publish:ngrx-http-tracking": "npm publish ./libs/ngrx-http-tracking"
+    "build:http": "nx build ngrx-http-tracking --prod",
+    "publish:http": "npm run build:http && npm publish ./dist/libs/ngrx-http-tracking",
+    "build:http-docs": "nx build --prod --outputPath=../docs --baseHref='https://acandylevey.github.io/ngrx-http-tracking/'"
   },
   "private": true,
   "dependencies": {
@@ -45,7 +46,7 @@
     "@ngrx/router-store": "13.0.2",
     "@ngrx/store": "13.0.2",
     "@nrwl/angular": "13.6.1",
-    "rxjs": "~6.6.0",
+    "rxjs": "^6.5.0",
     "tslib": "^2.0.0",
     "zone.js": "0.11.4"
   },
