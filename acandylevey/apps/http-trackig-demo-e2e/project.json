@@ -1,5 +1,4 @@
 {
-  "root": "apps/http-trackig-demo-e2e",
   "sourceRoot": "apps/http-trackig-demo-e2e/src",
   "projectType": "application",
   "targets": {

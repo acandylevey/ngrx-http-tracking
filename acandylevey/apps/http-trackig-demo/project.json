@@ -1,6 +1,5 @@
 {
   "projectType": "application",
-  "root": "apps/http-trackig-demo",
   "sourceRoot": "apps/http-trackig-demo/src",
   "prefix": "acandylevey",
   "targets": {
@@ -86,7 +85,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/http-trackig-demo"],
       "options": {
-        "jestConfig": "apps/http-trackig-demo/jest.config.js",
+        "jestConfig": "apps/http-trackig-demo/jest.config.ts",
         "passWithNoTests": true
       }
     }

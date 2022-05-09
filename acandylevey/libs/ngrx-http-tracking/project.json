@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/ngrx-http-tracking",
   "sourceRoot": "libs/ngrx-http-tracking/src",
   "prefix": "acandylevey",
   "targets": {
@@ -24,7 +23,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/ngrx-http-tracking"],
       "options": {
-        "jestConfig": "libs/ngrx-http-tracking/jest.config.js",
+        "jestConfig": "libs/ngrx-http-tracking/jest.config.ts",
         "passWithNoTests": true
       }
     },
