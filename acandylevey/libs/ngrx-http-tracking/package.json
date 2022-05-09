@@ -1,6 +1,6 @@
 {
   "name": "@acandylevey/ngrx-http-tracking",
-  "version": "13.2.0",
+  "version": "13.2.1",
   "license": "MIT",
   "author": {
     "name": "Alexander Candy-Levey",
@@ -10,16 +10,16 @@
     "url": "https://github.com/acandylevey/ngrx-http-tracking"
   },
   "peerDependencies": {
-    "@angular/common": "^13.3.6",
-    "@angular/core": "^13.3.6",
-    "@angular/platform-browser-dynamic": "^13.3.6",
-    "@nrwl/angular": "^14.1.4",
-    "@ngrx/store": "^13.0.2",
-    "@ngrx/effects": "^13.0.2",
-    "@ngrx/entity": "^13.0.2",
+    "@angular/common": "^13.3.0",
+    "@angular/core": "^13.3.0",
+    "@angular/platform-browser-dynamic": "^13.3.0",
+    "@nrwl/angular": "^14.1.0",
+    "@ngrx/store": "^13.0.0",
+    "@ngrx/effects": "^13.0.0",
+    "@ngrx/entity": "^13.0.0",
     "rxjs": "^6.5.0"
   },
   "dependencies": {
-    "tslib": "^2.0.0",
+    "tslib": "^2.0.0"
   }
 }
