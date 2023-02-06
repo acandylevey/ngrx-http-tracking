@@ -1,4 +1,4 @@
-import { HttpTrackingFacade } from '@acandylevey/ngrx-http-tracking';
+import { HttpTrackingFacade } from 'http-tracking';
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import * as BusinessActions from './business.actions';
@@ -10,7 +10,7 @@ export class BusinessFacade {
    * Combine pieces of state using createSelector,
    * and expose them as observables through the facade.
    */
-  loaded$ = this.httpTracker.isLoaded(BusinessActions.fetchbusiness);
+  loaded$ = this.httpTracker.isLoaded(BusinessActions.fetchbusiness.loaded);
   allBusiness$ = this.store.pipe(select(BusinessSelectors.getAllBusiness));
   selectedBusiness$ = this.store.pipe(select(BusinessSelectors.getSelected));
 

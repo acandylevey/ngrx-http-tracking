@@ -1,4 +1,4 @@
-import { HttpTrackingFacade } from '@acandylevey/ngrx-http-tracking';
+import { HttpTrackingFacade } from 'http-tracking';
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import * as BooksActions from './books.actions';
@@ -10,7 +10,7 @@ export class BooksFacade {
    * Combine pieces of state using createSelector,
    * and expose them as observables through the facade.
    */
-  loaded$ = this.httpTracker.isLoaded(BooksActions.fetchBooks);
+  loaded$ = this.httpTracker.isLoaded(BooksActions.fetchBooks.loaded);
   allBooks$ = this.store.pipe(select(BooksSelectors.getAllBooks));
   selectedBooks$ = this.store.pipe(select(BooksSelectors.getSelected));
 

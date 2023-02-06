@@ -1,4 +1,4 @@
-import { createTrackingEffect } from '@acandylevey/ngrx-http-tracking';
+import { createTrackingEffect } from 'http-tracking';
 import { Injectable } from '@angular/core';
 import { Actions } from '@ngrx/effects';
 import { CalendarApiService } from './calendar-api.service';

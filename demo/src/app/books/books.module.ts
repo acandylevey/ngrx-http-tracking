@@ -7,7 +7,7 @@ import { BooksEffects } from './+state/books.effects';
 import { BooksFacade } from './+state/books.facade';
 import { BooksApiService } from './+state/books-api.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgrxHttpTrackingModule } from '@acandylevey/ngrx-http-tracking';
+import { HttpTrackingModule } from 'http-tracking';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     BrowserModule,
     HttpClientModule,
-    NgrxHttpTrackingModule,
+    HttpTrackingModule,
     StoreModule.forFeature(fromBooks.BOOKS_FEATURE_KEY, fromBooks.reducer),
     EffectsModule.forFeature([BooksEffects]),
   ],

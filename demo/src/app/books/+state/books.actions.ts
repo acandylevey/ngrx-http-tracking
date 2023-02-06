@@ -1,5 +1,5 @@
 import { BooksEntity } from './books.models';
-import { createTrackingActions } from '@acandylevey/ngrx-http-tracking';
+import { createTrackingActions } from 'http-tracking';
 import { createAction } from '@ngrx/store';
 
 const BOOK_NAMESPACE = 'books';

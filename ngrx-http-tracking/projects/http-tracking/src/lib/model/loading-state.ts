@@ -1,5 +1,5 @@
 export enum LoadingState {
-    INIT = 'INIT',
-    LOADING = 'LOADING',
-    LOADED = 'LOADED',
+  INIT = 'INIT',
+  LOADING = 'LOADING',
+  LOADED = 'LOADED',
 }

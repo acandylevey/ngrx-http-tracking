@@ -7,7 +7,6 @@ This NgRx library is aims to slot into your pre-existing NgRx stores to reduce t
 Compatibility
 
 ```
-Nx 14+
 Angular 13+
 ```
 
@@ -21,11 +20,11 @@ Importing the module
 
 ```
 ...
-import { NgrxHttpTrackingModule } from '@acandylevey/ngrx-http-tracking';
+import { HttpTrackingModule } from '@acandylevey/ngrx-http-tracking';
 
  imports: [
     ...
-    NgrxHttpTrackingModule,
+    HttpTrackingModule,
  ]
 
 ```

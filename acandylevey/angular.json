@@ -1,8 +1,0 @@
-{
-  "version": 2,
-  "projects": {
-    "http-tracking-demo": "apps/http-tracking-demo",
-    "http-tracking-demo-e2e": "apps/http-tracking-demo-e2e",
-    "ngrx-http-tracking": "libs/ngrx-http-tracking"
-  }
-}

@@ -1,4 +1,4 @@
-import { HttpTrackingFacade } from '@acandylevey/ngrx-http-tracking';
+import { HttpTrackingFacade } from 'http-tracking';
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import * as AnimalsActions from './animals.actions';
@@ -10,7 +10,7 @@ export class AnimalsFacade {
    * Combine pieces of state using createSelector,
    * and expose them as observables through the facade.
    */
-  loaded$ = this.httpTracker.isLoaded(AnimalsActions.fetchAnimals);
+  loaded$ = this.httpTracker.isLoaded(AnimalsActions.fetchAnimals.loaded);
   allAnimals$ = this.store.pipe(select(AnimalsSelectors.getAllAnimals));
   selectedAnimals$ = this.store.pipe(select(AnimalsSelectors.getSelected));
 

@@ -1,6 +1,6 @@
-import { HttpTrackingFacade } from '@acandylevey/ngrx-http-tracking';
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { HttpTrackingFacade } from 'http-tracking';
 import * as CalendarActions from './calendar.actions';
 import * as CalendarSelectors from './calendar.selectors';
 
@@ -10,7 +10,7 @@ export class CalendarFacade {
    * Combine pieces of state using createSelector,
    * and expose them as observables through the facade.
    */
-  loaded$ = this.httpTracker.isLoaded(CalendarActions.fetchCalendars);
+  loaded$ = this.httpTracker.isLoaded(CalendarActions.fetchCalendars.loaded);
   allCalendar$ = this.store.pipe(select(CalendarSelectors.getAllCalendar));
   selectedCalendar$ = this.store.pipe(select(CalendarSelectors.getSelected));
 

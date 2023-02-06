@@ -1,4 +1,4 @@
-import { HttpTrackingFacade } from '@acandylevey/ngrx-http-tracking';
+import { HttpTrackingFacade } from 'http-tracking';
 import { Component } from '@angular/core';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { AnimalsFacade } from './animals/+state/animals.facade';
@@ -27,18 +27,22 @@ export class AppComponent {
   };
 
   books = {
-    isLoaded$: this.httpTrackingFacade.isLoaded(BooksActions.fetchBooks),
-    isLoading$: this.httpTrackingFacade.isLoading(BooksActions.fetchBooks),
-    trackingData$: this.httpTrackingFacade.getTracking(BooksActions.fetchBooks),
+    isLoaded$: this.httpTrackingFacade.isLoaded(BooksActions.fetchBooks.loaded),
+    isLoading$: this.httpTrackingFacade.isLoading(
+      BooksActions.fetchBooks.loaded
+    ),
+    trackingData$: this.httpTrackingFacade.getTracking(
+      BooksActions.fetchBooks.loaded
+    ),
     entities$: this.booksFacade.allBooks$,
   };
 
   chained = {
     businessStatus$: this.httpTrackingFacade
-      .getTracking(BusinessActions.fetchbusiness)
+      .getTracking(BusinessActions.fetchbusiness.loading)
       .pipe(map((x) => x?.httpStatus)),
     calendarStatus$: this.httpTrackingFacade
-      .getTracking(CalendarActions.fetchCalendars)
+      .getTracking(CalendarActions.fetchCalendars.loading)
       .pipe(map((x) => x?.httpStatus)),
   };
 

@@ -7,7 +7,7 @@ import { AnimalsEffects } from './+state/animals.effects';
 import { AnimalsFacade } from './+state/animals.facade';
 import { AnimalsApiService } from './+state/animals-api.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgrxHttpTrackingModule } from '@acandylevey/ngrx-http-tracking';
+import { HttpTrackingModule } from 'http-tracking';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     BrowserModule,
     HttpClientModule,
-    NgrxHttpTrackingModule,
+    HttpTrackingModule,
     StoreModule.forFeature(
       fromAnimals.ANIMALS_FEATURE_KEY,
       fromAnimals.reducer
