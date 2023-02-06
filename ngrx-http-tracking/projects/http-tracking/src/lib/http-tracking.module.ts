@@ -1,21 +1,20 @@
-import {
-  HTTP_TRACKING_FEATURE_KEY,
-  httpTrackingReducer,
-} from './+state/http-tracking.reducer';
-
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import * as fromHttpTracking from './+state/http-tracking.reducer';
 import { HttpTrackingEffects } from './+state/http-tracking.effects';
 import { HttpTrackingFacade } from './+state/http-tracking.facade';
-import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forFeature(HTTP_TRACKING_FEATURE_KEY, httpTrackingReducer),
+    StoreModule.forFeature(
+      fromHttpTracking.HTTP_TRACKING_FEATURE_KEY,
+      fromHttpTracking.httpTrackingReducer
+    ),
     EffectsModule.forFeature([HttpTrackingEffects]),
   ],
   providers: [HttpTrackingFacade],
 })
-export class HttpTrackingModule {}
+export class NgrxHttpTrackingModule {}

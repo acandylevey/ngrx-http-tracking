@@ -1,8 +1,10 @@
-import { routerReducer } from '@ngrx/router-store';
 import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
+
 import { Action } from '@ngrx/store/src/models';
-import { environment } from 'src/environments/environment';
+
+import { routerReducer } from '@ngrx/router-store';
 import { AppState } from './app-state';
+import { environment } from '../../../environments/environment';
 
 export const actionReducer =
   (reducer: ActionReducer<any>): ActionReducer<any> =>

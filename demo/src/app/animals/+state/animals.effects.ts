@@ -10,7 +10,7 @@ export class AnimalsEffects {
     this.actions$,
     AnimalsActions.fetchAnimals,
     this.api.fetchAnimals,
-    'Coulld not load animals',
+    'Could not load animals',
     (context) => {
       console.log('Animals Successfully loaded');
       console.log('Request: ', context.request);

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
+import { environment } from '../../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
-import { environment } from 'src/environments/environment';
 import { AppEffects } from './+state/app.effects';
 import { metaReducers, reducers } from './+state/app.reducers';
 import { storeDevToolsImport } from './store-dev-tools-import';

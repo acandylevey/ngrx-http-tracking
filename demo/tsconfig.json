@@ -12,7 +12,8 @@
         "../ngrx-http-tracking/dist/http-tracking/http-tracking",
         "../ngrx-http-tracking/dist/http-tracking"
       ],
-      "@angular/*": ["./node_modules/@angular/*"]
+      "@angular": ["./node_modules/@angular/*"],
+      "@ngrx": ["../node_modules/@ngrx/*"]
     },
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,

@@ -1,22 +1,20 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StoreModule } from '@ngrx/store';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
-import * as fromAnimals from './+state/animals.reducer';
+import { StoreModule } from '@ngrx/store';
+import { NgrxHttpTrackingModule } from 'http-tracking';
+import { AnimalsApiService } from './+state/animals-api.service';
 import { AnimalsEffects } from './+state/animals.effects';
 import { AnimalsFacade } from './+state/animals.facade';
-import { AnimalsApiService } from './+state/animals-api.service';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpTrackingModule } from 'http-tracking';
-import { HttpClientModule } from '@angular/common/http';
+import * as fromAnimals from './+state/animals.reducer';
 
 @NgModule({
   declarations: [],
   imports: [
+    NgrxHttpTrackingModule,
     CommonModule,
     BrowserModule,
-    HttpClientModule,
-    HttpTrackingModule,
     StoreModule.forFeature(
       fromAnimals.ANIMALS_FEATURE_KEY,
       fromAnimals.reducer

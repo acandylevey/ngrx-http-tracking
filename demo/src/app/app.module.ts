@@ -1,10 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { HttpTrackingModule } from 'http-tracking';
-import { environment } from '../environments/environment';
 import { AnimalsModule } from './animals/animals.module';
 import { AppStoreModule } from './app-store/app-store.module';
 import { AppComponent } from './app.component';
@@ -16,14 +12,13 @@ import { CalendarModule } from './calendar/calendar.module';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppStoreModule,
+    HttpClientModule,
     AnimalsModule,
     BooksModule,
     CalendarModule,
     BusinessModule,
-    HttpTrackingModule,
+    AppStoreModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

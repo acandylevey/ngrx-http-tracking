@@ -27,9 +27,11 @@ export class AppComponent {
   };
 
   books = {
-    isLoaded$: this.httpTrackingFacade.isLoaded(BooksActions.fetchBooks.loaded),
+    isLoaded$: this.httpTrackingFacade.isLoaded(
+      BooksActions.fetchBooks.loading
+    ),
     isLoading$: this.httpTrackingFacade.isLoading(
-      BooksActions.fetchBooks.loaded
+      BooksActions.fetchBooks.loading
     ),
     trackingData$: this.httpTrackingFacade.getTracking(
       BooksActions.fetchBooks.loaded
