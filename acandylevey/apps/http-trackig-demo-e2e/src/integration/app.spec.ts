@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('http-trackig-demo', () => {
+describe('http-tracking-demo', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
@@ -8,6 +8,6 @@ describe('http-trackig-demo', () => {
     cy.login('my-email@something.com', 'myPassword');
 
     // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome to http-trackig-demo!');
+    getGreeting().contains('Welcome to http-tracking-demo!');
   });
 });

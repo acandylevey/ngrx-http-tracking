@@ -15,7 +15,7 @@ import { CalendarFacade } from './calendar/+state/calendar.facade';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'http-trackig-demo';
+  title = 'http-tracking-demo';
 
   global = {
     loading$: this.httpTrackingFacade.getGlobalLoading(),

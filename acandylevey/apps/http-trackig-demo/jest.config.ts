@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'http-trackig-demo',
+  displayName: 'http-tracking-demo',
 
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/apps/http-trackig-demo',
+  coverageDirectory: '../../coverage/apps/http-tracking-demo',
   transform: {
     '^.+.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

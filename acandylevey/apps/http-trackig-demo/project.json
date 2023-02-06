@@ -1,23 +1,23 @@
 {
   "projectType": "application",
-  "sourceRoot": "apps/http-trackig-demo/src",
+  "sourceRoot": "apps/http-tracking-demo/src",
   "prefix": "acandylevey",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/http-trackig-demo",
-        "index": "apps/http-trackig-demo/src/index.html",
-        "main": "apps/http-trackig-demo/src/main.ts",
-        "polyfills": "apps/http-trackig-demo/src/polyfills.ts",
-        "tsConfig": "apps/http-trackig-demo/tsconfig.app.json",
+        "outputPath": "dist/apps/http-tracking-demo",
+        "index": "apps/http-tracking-demo/src/index.html",
+        "main": "apps/http-tracking-demo/src/main.ts",
+        "polyfills": "apps/http-tracking-demo/src/polyfills.ts",
+        "tsConfig": "apps/http-tracking-demo/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "apps/http-trackig-demo/src/favicon.ico",
-          "apps/http-trackig-demo/src/assets"
+          "apps/http-tracking-demo/src/favicon.ico",
+          "apps/http-tracking-demo/src/assets"
         ],
-        "styles": ["apps/http-trackig-demo/src/styles.scss"],
+        "styles": ["apps/http-tracking-demo/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -36,8 +36,8 @@
           ],
           "fileReplacements": [
             {
-              "replace": "apps/http-trackig-demo/src/environments/environment.ts",
-              "with": "apps/http-trackig-demo/src/environments/environment.prod.ts"
+              "replace": "apps/http-tracking-demo/src/environments/environment.ts",
+              "with": "apps/http-tracking-demo/src/environments/environment.prod.ts"
             }
           ],
           "outputHashing": "all"
@@ -57,10 +57,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "http-trackig-demo:build:production"
+          "browserTarget": "http-tracking-demo:build:production"
         },
         "development": {
-          "browserTarget": "http-trackig-demo:build:development"
+          "browserTarget": "http-tracking-demo:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -68,24 +68,24 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "http-trackig-demo:build"
+        "browserTarget": "http-tracking-demo:build"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "apps/http-trackig-demo/src/**/*.ts",
-          "apps/http-trackig-demo/src/**/*.html"
+          "apps/http-tracking-demo/src/**/*.ts",
+          "apps/http-tracking-demo/src/**/*.html"
         ]
       },
       "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/http-trackig-demo"],
+      "outputs": ["coverage/apps/http-tracking-demo"],
       "options": {
-        "jestConfig": "apps/http-trackig-demo/jest.config.ts",
+        "jestConfig": "apps/http-tracking-demo/jest.config.ts",
         "passWithNoTests": true
       }
     }
