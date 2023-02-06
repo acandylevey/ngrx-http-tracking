@@ -12,8 +12,7 @@
         "../ngrx-http-tracking/dist/http-tracking/http-tracking",
         "../ngrx-http-tracking/dist/http-tracking"
       ],
-      "@angular": ["./node_modules/@angular/*"],
-      "@ngrx": ["../node_modules/@ngrx/*"]
+      "@angular/*": ["./node_modules/@angular/*"]
     },
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -30,6 +29,7 @@
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
+    "preserveSymlinks": true,
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
