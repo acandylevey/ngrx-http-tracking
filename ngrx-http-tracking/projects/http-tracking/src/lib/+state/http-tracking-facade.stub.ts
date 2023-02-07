@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { HttpTrackingEntity } from '../../model/http-tracking-entity';
+import { HttpTrackingEntity } from '../model/http-tracking-entity';
 import { Observable, of } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { Injectable } from '@angular/core';
-import { TrackingAction } from '../../function/http-tracking-actions.factory';
-import { LoadingState } from '../../model/loading-state';
+import { TrackingAction } from '../function/http-tracking-actions.factory';
+import { LoadingState } from '../model/loading-state';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface HttpTrackingResult<T1, T2> {}

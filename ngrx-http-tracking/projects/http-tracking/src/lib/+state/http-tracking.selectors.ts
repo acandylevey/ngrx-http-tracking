@@ -1,11 +1,11 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { isDefined } from '../../function/is-defined';
-import { LoadingState } from '../../model/loading-state';
 import {
-  httpTrackingAdapter,
   HTTP_TRACKING_FEATURE_KEY,
+  httpTrackingAdapter,
   State,
 } from './http-tracking.reducer';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { isDefined } from '../function/is-defined';
+import { LoadingState } from '../model/loading-state';
 
 const selectFeature = createFeatureSelector<State>(HTTP_TRACKING_FEATURE_KEY);
 

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { filter, tap } from 'rxjs/operators';
-import { mapActionTypeToId } from '../../function/map-action-typ-to-id';
-import { LoadingState } from '../../model/loading-state';
+import { mapActionTypeToId } from '../function/map-action-typ-to-id';
+import { LoadingState } from '../model/loading-state';
 import { trackHttpRequest } from './http-tracking.actions';
 
 @Injectable({

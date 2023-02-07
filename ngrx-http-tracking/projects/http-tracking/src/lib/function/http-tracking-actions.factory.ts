@@ -221,7 +221,7 @@ export interface TrackingAction<TRequest, TPayload> {
 
 export const createTrackingEffect = <TRequest, TPayload>(
   actions$: Actions,
-  trackingAction: TrackingAction<TRequest, TPayload>,
+  tackingAction: TrackingAction<TRequest, TPayload>,
   serviceCall: (request: TRequest) => Observable<TPayload>,
   fallbackErrorMsg: string,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -231,10 +231,10 @@ export const createTrackingEffect = <TRequest, TPayload>(
 ) =>
   createEffect(() =>
     actions$.pipe(
-      ofType(trackingAction.loading),
+      ofType(tackingAction.loading),
       switchMap((action) =>
         serviceCall(action.request).pipe(
-          map((payload) => trackingAction.loaded({ payload })),
+          map((payload) => tackingAction.loaded({ payload })),
           tap((successAction) =>
             successFn({
               request: action.request,
@@ -251,10 +251,10 @@ export const createTrackingEffect = <TRequest, TPayload>(
             ) {
               e.error.text().then((errorBlobText: string) => {
                 const errorJson = JSON.parse(errorBlobText);
-                subjectMsg.next(trackingAction.failure(e, errorJson.error));
+                subjectMsg.next(tackingAction.failure(e, errorJson.error));
               });
             } else {
-              return of(trackingAction.failure(e, fallbackErrorMsg));
+              return of(tackingAction.failure(e, fallbackErrorMsg));
             }
             return subjectMsg;
           })

@@ -1,14 +1,14 @@
 import * as HttpTrackingActions from './http-tracking.actions';
 import * as HttpTrackingSelectors from './http-tracking.selectors';
 import { Action, Store } from '@ngrx/store';
-import { HttpTrackingEntity } from '../../model/http-tracking-entity';
+import { HttpTrackingEntity } from '../model/http-tracking-entity';
 import { debounceTime, filter, map, take } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
-import { isError } from '../../function/is-error';
-import { mapActionTypeToId } from '../../function/map-action-typ-to-id';
-import { TrackingAction } from '../../function/http-tracking-actions.factory';
-import { LoadingState } from '../../model/loading-state';
+import { isError } from '../function/is-error';
+import { mapActionTypeToId } from '../function/map-action-typ-to-id';
+import { TrackingAction } from '../function/http-tracking-actions.factory';
+import { LoadingState } from '../model/loading-state';
 
 export interface HttpTrackingResult<T1, T2> {
   action: TrackingAction<T1, T2>;
