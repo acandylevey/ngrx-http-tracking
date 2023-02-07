@@ -1,16 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StoreModule } from '@ngrx/store';
+import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
-import * as fromCalendar from './+state/calendar.reducer';
+import { StoreModule } from '@ngrx/store';
+import { CalendarApiService } from './+state/calendar-api.service';
 import { CalendarEffects } from './+state/calendar.effects';
 import { CalendarFacade } from './+state/calendar.facade';
-import { CalendarApiService } from './+state/calendar-api.service';
-import { NgrxHttpTrackingModule } from 'http-tracking';
+import * as fromCalendar from './+state/calendar.reducer';
+
 @NgModule({
   declarations: [],
   imports: [
-    NgrxHttpTrackingModule,
     CommonModule,
     StoreModule.forFeature(
       fromCalendar.CALENDAR_FEATURE_KEY,

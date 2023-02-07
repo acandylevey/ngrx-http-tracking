@@ -1,8 +1,8 @@
 import * as HttpTrackingActions from './http-tracking.actions';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
-import { HttpTrackingEntity } from '../model/http-tracking-entity';
-import { LoadingState } from '../model/loading-state';
+import { HttpTrackingEntity } from '../../model/http-tracking-entity';
+import { LoadingState } from '../../model/loading-state';
 
 export const HTTP_TRACKING_FEATURE_KEY = 'httpTracking';
 

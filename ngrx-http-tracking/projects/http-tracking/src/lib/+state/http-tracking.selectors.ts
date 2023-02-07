@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { isDefined } from '../function/is-defined';
-import { LoadingState } from '../model/loading-state';
+import { isDefined } from '../../function/is-defined';
+import { LoadingState } from '../../model/loading-state';
 import {
   httpTrackingAdapter,
   HTTP_TRACKING_FEATURE_KEY,

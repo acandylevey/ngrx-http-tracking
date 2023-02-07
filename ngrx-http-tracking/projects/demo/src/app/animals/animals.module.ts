@@ -1,18 +1,16 @@
+import * as fromAnimals from './+state/animals.reducer';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { NgrxHttpTrackingModule } from 'http-tracking';
 import { AnimalsApiService } from './+state/animals-api.service';
 import { AnimalsEffects } from './+state/animals.effects';
 import { AnimalsFacade } from './+state/animals.facade';
-import * as fromAnimals from './+state/animals.reducer';
 
 @NgModule({
   declarations: [],
   imports: [
-    NgrxHttpTrackingModule,
     CommonModule,
     BrowserModule,
     StoreModule.forFeature(

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { HttpTrackingEntity } from '../model/http-tracking-entity';
+import { HttpTrackingEntity } from '../../model/http-tracking-entity';
 
 const ACTIONS_NAMESPACE = 'Http Tracking';
 
