@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { HttpTrackingFacade } from 'http-tracking';
+import { HttpTrackingFacade } from 'ngrx-http-tracking';
 import * as CalendarActions from './calendar.actions';
 import * as CalendarSelectors from './calendar.selectors';
 

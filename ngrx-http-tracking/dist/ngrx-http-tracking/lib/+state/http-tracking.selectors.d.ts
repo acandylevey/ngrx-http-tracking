@@ -1,0 +1,4 @@
+export declare const selectOneHttpTracking: (id: string) => import("@ngrx/store").MemoizedSelector<object, import("ngrx-http-tracking").HttpTrackingEntity | undefined, (s1: import("@ngrx/entity").Dictionary<import("ngrx-http-tracking").HttpTrackingEntity>) => import("ngrx-http-tracking").HttpTrackingEntity | undefined>;
+export declare const selectHttpTrackingByTag: (tag: string) => import("@ngrx/store").MemoizedSelector<object, import("ngrx-http-tracking").HttpTrackingEntity[], (s1: import("ngrx-http-tracking").HttpTrackingEntity[]) => import("ngrx-http-tracking").HttpTrackingEntity[]>;
+export declare const selectErrorsByTag: (tag: string) => import("@ngrx/store").MemoizedSelector<object, Error[], (s1: import("ngrx-http-tracking").HttpTrackingEntity[]) => Error[]>;
+export declare const selectLoadingByTag: (tag: string) => import("@ngrx/store").MemoizedSelector<object, boolean, (s1: import("ngrx-http-tracking").HttpTrackingEntity[]) => boolean>;

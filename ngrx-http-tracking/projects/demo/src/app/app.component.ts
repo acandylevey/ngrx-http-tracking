@@ -1,4 +1,4 @@
-import { HttpTrackingFacade } from 'http-tracking';
+import { HttpTrackingFacade } from 'ngrx-http-tracking';
 import { Component } from '@angular/core';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { AnimalsFacade } from './animals/+state/animals.facade';

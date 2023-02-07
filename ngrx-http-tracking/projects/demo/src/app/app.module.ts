@@ -9,12 +9,12 @@ import { AppComponent } from './app.component';
 import { BooksModule } from './books/books.module';
 import { BusinessModule } from './business/business.module';
 import { CalendarModule } from './calendar/calendar.module';
-import { HttpTrackingModule } from 'http-tracking';
+import { NgrxHttpTrackingModule } from 'ngrx-http-tracking';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    HttpTrackingModule,
+    NgrxHttpTrackingModule,
     BrowserModule,
     StoreModule.forRoot(
       {},

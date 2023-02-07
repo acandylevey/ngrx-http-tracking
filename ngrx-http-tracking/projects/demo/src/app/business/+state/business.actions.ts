@@ -1,5 +1,5 @@
 import { createAction } from '@ngrx/store';
-import { createTrackingActions } from 'http-tracking';
+import { createTrackingActions } from 'ngrx-http-tracking';
 import { BusinessEntity } from './business.models';
 
 const BUSINESS_NAMESPACE = 'business';

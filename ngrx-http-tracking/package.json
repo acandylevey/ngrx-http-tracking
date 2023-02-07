@@ -7,7 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:http-tracking": "ng build http-tracking --configuration production"
+    "build:ngrx-http-tracking": "ng build ngrx-http-tracking --configuration production",
+    "publish:ngrx-http-tracking": "npm run build:ngrx-http-tracking && npm publish ./dist/ngrx-http-tracking",
+    "build:ngrx-http-tracking-docs": "ng build demo --configuration production"
   },
   "private": true,
   "dependencies": {

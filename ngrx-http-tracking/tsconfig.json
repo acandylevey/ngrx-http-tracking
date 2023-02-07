@@ -8,9 +8,8 @@
     "strict": true,
     "noImplicitOverride": true,
     "paths": {
-      "http-tracking": [
-        "dist/http-tracking/http-tracking",
-        "dist/http-tracking"
+      "ngrx-http-tracking": [
+        "dist/ngrx-http-tracking"
       ]
     },
     "noPropertyAccessFromIndexSignature": true,

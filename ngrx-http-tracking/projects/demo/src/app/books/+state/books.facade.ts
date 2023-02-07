@@ -1,4 +1,4 @@
-import { HttpTrackingFacade } from 'http-tracking';
+import { HttpTrackingFacade } from 'ngrx-http-tracking';
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import * as BooksActions from './books.actions';

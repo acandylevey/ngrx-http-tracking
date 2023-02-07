@@ -1,4 +1,4 @@
-import { createTrackingActions } from 'http-tracking';
+import { createTrackingActions } from 'ngrx-http-tracking';
 import { createAction } from '@ngrx/store';
 import { CalendarEntity } from './calendar.models';
 
