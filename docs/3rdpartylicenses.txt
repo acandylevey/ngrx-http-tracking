@@ -19,7 +19,7 @@ MIT
 @ngrx/store-devtools
 MIT
 
-http-tracking
+ngrx-http-tracking
 
 rxjs
 Apache-2.0
