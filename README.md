@@ -20,11 +20,11 @@ Importing the module
 
 ```
 ...
-import { HttpTrackingModule } from '@acandylevey/ngrx-http-tracking';
+import { NgrxHttpTrackingModule } from '@acandylevey/ngrx-http-tracking';
 
  imports: [
     ...
-    HttpTrackingModule,
+    NgrxHttpTrackingModule,
  ]
 
 ```
