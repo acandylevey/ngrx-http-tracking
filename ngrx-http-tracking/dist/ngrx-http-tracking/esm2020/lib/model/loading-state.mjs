@@ -1,0 +1,7 @@
+export var LoadingState;
+(function (LoadingState) {
+    LoadingState["INIT"] = "INIT";
+    LoadingState["LOADING"] = "LOADING";
+    LoadingState["LOADED"] = "LOADED";
+})(LoadingState || (LoadingState = {}));
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibG9hZGluZy1zdGF0ZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3Byb2plY3RzL25ncngtaHR0cC10cmFja2luZy9zcmMvbGliL21vZGVsL2xvYWRpbmctc3RhdGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsTUFBTSxDQUFOLElBQVksWUFJWDtBQUpELFdBQVksWUFBWTtJQUN0Qiw2QkFBYSxDQUFBO0lBQ2IsbUNBQW1CLENBQUE7SUFDbkIsaUNBQWlCLENBQUE7QUFDbkIsQ0FBQyxFQUpXLFlBQVksS0FBWixZQUFZLFFBSXZCIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGVudW0gTG9hZGluZ1N0YXRlIHtcclxuICBJTklUID0gJ0lOSVQnLFxyXG4gIExPQURJTkcgPSAnTE9BRElORycsXHJcbiAgTE9BREVEID0gJ0xPQURFRCcsXHJcbn1cclxuIl19

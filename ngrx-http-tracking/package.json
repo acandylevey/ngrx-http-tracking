@@ -1,0 +1,49 @@
+{
+  "name": "ngrx-http-tracking",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "build:ngrx-http-tracking": "ng build ngrx-http-tracking --configuration production",
+    "publish:ngrx-http-tracking": "npm run build:ngrx-http-tracking && npm publish ./dist/ngrx-http-tracking",
+    "build:ngrx-http-tracking-docs": "ng build demo --configuration production"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "15.1.3",
+    "@angular/common": "15.1.3",
+    "@angular/compiler": "15.1.3",
+    "@angular/core": "15.1.3",
+    "@angular/forms": "15.1.3",
+    "@angular/platform-browser": "15.1.3",
+    "@angular/platform-browser-dynamic": "15.1.3",
+    "@angular/router": "15.1.3",
+    "@ngrx/component-store": "^15.1.2",
+    "@ngrx/effects": "^15.1.2",
+    "@ngrx/entity": "^15.1.2",
+    "@ngrx/router-store": "^15.1.2",
+    "@ngrx/store": "^15.1.2",
+    "@ngrx/store-devtools": "^15.1.2",
+    "rxjs": "7.5.0",
+    "tslib": "2.3.0",
+    "zone.js": "0.11.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^15.1.4",
+    "@angular/cli": "^15.1.4",
+    "@angular/compiler-cli": "^15.1.3",
+    "@types/jasmine": "~3.10.0",
+    "@types/node": "^12.11.1",
+    "jasmine-core": "~3.10.0",
+    "karma": "~6.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "~1.7.0",
+    "ng-packagr": "^15.1.1",
+    "typescript": "~4.8.4"
+  }
+}

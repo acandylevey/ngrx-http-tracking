@@ -7,7 +7,6 @@ This NgRx library is aims to slot into your pre-existing NgRx stores to reduce t
 Compatibility
 
 ```
-Nx 14+
 Angular 13+
 ```
 
