@@ -1,9 +1,9 @@
 {
   "name": "@acandylevey/ngrx-http-tracking",
-  "version": "15.0.0",
+  "version": "15.0.1",
   "peerDependencies": {
-    "@angular/common": "^15.1.0",
-    "@angular/core": "^15.1.0"
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
