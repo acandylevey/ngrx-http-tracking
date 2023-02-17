@@ -33,8 +33,8 @@ jobs:
         run: npm i -g npm@8.1        
       - name: npm install
         run: |
-          sed -i "s/#{GITHUB_TAG_VERSION}#/${{ steps.tag-version.outputs.VERSION }}/g" ngrx-http-tracking/projects/ngrx-http-tracking/package.json
-          sed -i "s/#{GITHUB_TAG_VERSION}#/${{ steps.tag-version.outputs.VERSION }}/g" ngrx-http-tracking/package.json
+          sed -i "s/#{GITHUB_TAG_VERSION}#/${{ steps.tag-version.outputs.VERSION }}/g" /ngrx-http-tracking/projects/ngrx-http-tracking/package.json
+          sed -i "s/#{GITHUB_TAG_VERSION}#/${{ steps.tag-version.outputs.VERSION }}/g" /ngrx-http-tracking/package.json
           npm install
       - name: npm build & publish
         run: npm run publish:ngrx-http-tracking
