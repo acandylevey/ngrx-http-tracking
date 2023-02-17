@@ -40,6 +40,9 @@ jobs:
           sed -i "s/#{GITHUB_TAG_VERSION}#/${{ steps.tag-version.outputs.VERSION }}/g" package.json
           npm install
       - name: npm build & publish
-        run: npm run publish:ngrx-http-tracking
+        run: |        
+          echo "Changing Directory to ngrx-http-tracking"
+          cd ngrx-http-tracking
+          npm run publish:ngrx-http-tracking
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_TOKEN }}
