@@ -10,7 +10,7 @@ export class BusinessFacade {
    * Combine pieces of state using createSelector,
    * and expose them as observables through the facade.
    */
-  loaded$ = this.httpTracker.isLoaded(BusinessActions.fetchbusiness.loaded);
+  loaded$ = this.httpTracker.isLoaded(BusinessActions.fetchbusiness);
   allBusiness$ = this.store.pipe(select(BusinessSelectors.getAllBusiness));
   selectedBusiness$ = this.store.pipe(select(BusinessSelectors.getSelected));
 

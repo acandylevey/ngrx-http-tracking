@@ -11,11 +11,11 @@ export interface HttpTrackingResult<T1, T2> {
 export declare class HttpTrackingFacade {
     private store;
     constructor(store: Store);
-    getTracking(action: Action): Observable<HttpTrackingEntity | undefined>;
-    isLoading<T>(action: Action): Observable<boolean>;
-    isLoaded<T>(action: Action): Observable<boolean>;
-    isInit<T>(action: Action): Observable<boolean>;
-    getError<T>(action: Action): Observable<string | null>;
+    getTracking<T1, T2>(action: TrackingAction<T1, T2>): Observable<HttpTrackingEntity | undefined>;
+    isLoading<T1, T2>(action: TrackingAction<T1, T2>): Observable<boolean>;
+    isLoaded<T1, T2>(action: TrackingAction<T1, T2>): Observable<boolean>;
+    isInit<T1, T2>(action: TrackingAction<T1, T2>): Observable<boolean>;
+    getError<T1, T2>(action: TrackingAction<T1, T2>): Observable<string | null>;
     isTagLoading(tag: string): Observable<boolean>;
     getTagErrors(tag: string): Observable<Error[]>;
     clearGloballyHandledErrors(): void;

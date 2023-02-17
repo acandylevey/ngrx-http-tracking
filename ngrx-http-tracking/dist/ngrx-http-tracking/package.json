@@ -1,19 +1,19 @@
 {
-  "name": "ngrx-http-tracking",
-  "version": "0.0.1",
+  "name": "@acandylevey/ngrx-http-tracking",
+  "version": "#{GITHUB_TAG_VERSION}#",
   "peerDependencies": {
-    "@angular/common": "^15.1.0",
-    "@angular/core": "^15.1.0"
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
   "sideEffects": false,
-  "module": "fesm2015/ngrx-http-tracking.mjs",
-  "es2020": "fesm2020/ngrx-http-tracking.mjs",
-  "esm2020": "esm2020/ngrx-http-tracking.mjs",
-  "fesm2020": "fesm2020/ngrx-http-tracking.mjs",
-  "fesm2015": "fesm2015/ngrx-http-tracking.mjs",
+  "module": "fesm2015/acandylevey-ngrx-http-tracking.mjs",
+  "es2020": "fesm2020/acandylevey-ngrx-http-tracking.mjs",
+  "esm2020": "esm2020/acandylevey-ngrx-http-tracking.mjs",
+  "fesm2020": "fesm2020/acandylevey-ngrx-http-tracking.mjs",
+  "fesm2015": "fesm2015/acandylevey-ngrx-http-tracking.mjs",
   "typings": "index.d.ts",
   "exports": {
     "./package.json": {
@@ -21,11 +21,11 @@
     },
     ".": {
       "types": "./index.d.ts",
-      "esm2020": "./esm2020/ngrx-http-tracking.mjs",
-      "es2020": "./fesm2020/ngrx-http-tracking.mjs",
-      "es2015": "./fesm2015/ngrx-http-tracking.mjs",
-      "node": "./fesm2015/ngrx-http-tracking.mjs",
-      "default": "./fesm2020/ngrx-http-tracking.mjs"
+      "esm2020": "./esm2020/acandylevey-ngrx-http-tracking.mjs",
+      "es2020": "./fesm2020/acandylevey-ngrx-http-tracking.mjs",
+      "es2015": "./fesm2015/acandylevey-ngrx-http-tracking.mjs",
+      "node": "./fesm2015/acandylevey-ngrx-http-tracking.mjs",
+      "default": "./fesm2020/acandylevey-ngrx-http-tracking.mjs"
     }
   }
 }

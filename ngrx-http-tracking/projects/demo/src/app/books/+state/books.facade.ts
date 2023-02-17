@@ -10,7 +10,7 @@ export class BooksFacade {
    * Combine pieces of state using createSelector,
    * and expose them as observables through the facade.
    */
-  loaded$ = this.httpTracker.isLoaded(BooksActions.fetchBooks.loaded);
+  loaded$ = this.httpTracker.isLoaded(BooksActions.fetchBooks);
   allBooks$ = this.store.pipe(select(BooksSelectors.getAllBooks));
   selectedBooks$ = this.store.pipe(select(BooksSelectors.getSelected));
 

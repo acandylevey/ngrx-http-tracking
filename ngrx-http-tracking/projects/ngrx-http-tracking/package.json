@@ -1,6 +1,6 @@
 {
   "name": "@acandylevey/ngrx-http-tracking",
-  "version": "15.0.1",
+  "version": "#{GITHUB_TAG_VERSION}#",
   "peerDependencies": {
     "@angular/common": "^15.0.0",
     "@angular/core": "^15.0.0"

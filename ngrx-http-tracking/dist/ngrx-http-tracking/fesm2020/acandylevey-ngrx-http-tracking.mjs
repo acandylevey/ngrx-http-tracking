@@ -48,9 +48,9 @@ class HttpTrackingFacadeStub {
         return of();
     }
 }
-HttpTrackingFacadeStub.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: HttpTrackingFacadeStub, deps: [], target: i0.ɵɵFactoryTarget.Injectable });
-HttpTrackingFacadeStub.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: HttpTrackingFacadeStub });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: HttpTrackingFacadeStub, decorators: [{
+HttpTrackingFacadeStub.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingFacadeStub, deps: [], target: i0.ɵɵFactoryTarget.Injectable });
+HttpTrackingFacadeStub.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingFacadeStub });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingFacadeStub, decorators: [{
             type: Injectable
         }] });
 
@@ -66,13 +66,13 @@ const initialState = httpTrackingAdapter.getInitialState();
 const httpTrackingReducer = createReducer(initialState, on(trackHttpRequest, (state, { action, httpStatus, tags }) => httpTrackingAdapter.upsertOne({ action, httpStatus, tags }, state)), on(clearGloballyHandledErrors, (state) => {
     const actionsToUpdate = state.ids
         .map((id) => state.entities[id])
-        .filter((httpTracking) => {
-        var _a;
-        return !!httpTracking &&
-            ((_a = httpTracking === null || httpTracking === void 0 ? void 0 : httpTracking.httpStatus) === null || _a === void 0 ? void 0 : _a.message) &&
-            httpTracking.tags.includes('global');
-    })
-        .map((tracking) => (Object.assign(Object.assign({}, tracking), { httpStatus: LoadingState.INIT })));
+        .filter((httpTracking) => !!httpTracking &&
+        httpTracking?.httpStatus?.message &&
+        httpTracking.tags.includes('global'))
+        .map((tracking) => ({
+        ...tracking,
+        httpStatus: LoadingState.INIT,
+    }));
     return httpTrackingAdapter.upsertMany(actionsToUpdate, state);
 }));
 
@@ -83,11 +83,8 @@ const httpTrackingSelectors = httpTrackingAdapter.getSelectors(selectFeature);
 const selectOneHttpTracking = (id) => createSelector(httpTrackingSelectors.selectEntities, (s) => s[id]);
 const selectHttpTrackingByTag = (tag) => createSelector(httpTrackingSelectors.selectAll, (s) => s.filter((httpTracking) => httpTracking.tags.includes(tag)));
 const selectErrorsByTag = (tag) => createSelector(httpTrackingSelectors.selectAll, (s) => s
-    .filter((httpTracking) => {
-    var _a;
-    return isDefined((_a = httpTracking.httpStatus) === null || _a === void 0 ? void 0 : _a.message) &&
-        httpTracking.tags.includes(tag);
-})
+    .filter((httpTracking) => isDefined(httpTracking.httpStatus?.message) &&
+    httpTracking.tags.includes(tag))
     .map((httpTracking) => httpTracking.httpStatus));
 const selectLoadingByTag = (tag) => createSelector(httpTrackingSelectors.selectAll, (s) => s.some((httpTracking) => httpTracking.httpStatus === LoadingState.LOADING &&
     httpTracking.tags.includes(tag)));
@@ -106,19 +103,19 @@ class HttpTrackingFacade {
         this.store = store;
     }
     getTracking(action) {
-        return this.store.select(selectOneHttpTracking(mapActionTypeToId(action.type)));
+        return this.store.select(selectOneHttpTracking(mapActionTypeToId(action.loading.type)));
     }
     isLoading(action) {
-        return this.getTracking(action).pipe(map((x) => (x === null || x === void 0 ? void 0 : x.httpStatus) === LoadingState.LOADING));
+        return this.getTracking(action).pipe(map((x) => x?.httpStatus === LoadingState.LOADING));
     }
     isLoaded(action) {
-        return this.getTracking(action).pipe(map((x) => (x === null || x === void 0 ? void 0 : x.httpStatus) === LoadingState.LOADED));
+        return this.getTracking(action).pipe(map((x) => x?.httpStatus === LoadingState.LOADED));
     }
     isInit(action) {
-        return this.getTracking(action).pipe(map((x) => !x || x.httpStatus === LoadingState.INIT));
+        return this.getTracking(action).pipe(map((x) => !isDefined(x) || x?.httpStatus === LoadingState.INIT));
     }
     getError(action) {
-        return this.getTracking(action).pipe(filter((x) => isError(x === null || x === void 0 ? void 0 : x.httpStatus)), map((x) => (x === null || x === void 0 ? void 0 : x.httpStatus).message));
+        return this.getTracking(action).pipe(filter((x) => isError(x?.httpStatus)), map((x) => (x?.httpStatus).message));
     }
     isTagLoading(tag) {
         return this.store
@@ -153,7 +150,7 @@ class HttpTrackingFacade {
             .pipe(debounceTime(300));
     }
     getResolved(action) {
-        return this.getTracking(action.loading).pipe(filter((tracking) => !!tracking), map((tracking) => tracking.httpStatus), filter((httpStatus) => httpStatus === LoadingState.LOADED || isError(httpStatus)), take(1), map((httpStatus) => {
+        return this.getTracking(action).pipe(filter((tracking) => !!tracking), map((tracking) => tracking.httpStatus), filter((httpStatus) => httpStatus === LoadingState.LOADED || isError(httpStatus)), take(1), map((httpStatus) => {
             const retVal = {
                 action,
                 success: httpStatus === LoadingState.LOADED,
@@ -169,20 +166,19 @@ class HttpTrackingFacade {
         return forkJoin(results);
     }
 }
-HttpTrackingFacade.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: HttpTrackingFacade, deps: [{ token: i1.Store }], target: i0.ɵɵFactoryTarget.Injectable });
-HttpTrackingFacade.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: HttpTrackingFacade });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: HttpTrackingFacade, decorators: [{
+HttpTrackingFacade.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingFacade, deps: [{ token: i1.Store }], target: i0.ɵɵFactoryTarget.Injectable });
+HttpTrackingFacade.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingFacade });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingFacade, decorators: [{
             type: Injectable
         }], ctorParameters: function () { return [{ type: i1.Store }]; } });
 
 const convertResponseToError = (err, fallbackMessage) => {
-    var _a;
     let errorMsg = '';
-    if ((err === null || err === void 0 ? void 0 : err.name) === 'HttpErrorResponse' && typeof err.error === 'string') {
+    if (err?.name === 'HttpErrorResponse' && typeof err.error === 'string') {
         errorMsg = err.error;
     }
-    else if ((err === null || err === void 0 ? void 0 : err.name) === 'HttpErrorResponse' &&
-        typeof ((_a = err === null || err === void 0 ? void 0 : err.error) === null || _a === void 0 ? void 0 : _a.error) === 'string') {
+    else if (err?.name === 'HttpErrorResponse' &&
+        typeof err?.error?.error === 'string') {
         errorMsg = err.error.error;
     }
     return new Error(!errorMsg ? fallbackMessage : errorMsg);
@@ -190,8 +186,12 @@ const convertResponseToError = (err, fallbackMessage) => {
 
 function createTrackingAction(type, hasGlobalTag, tags, httpStatus, config) {
     if (typeof config === 'function') {
-        return defineType(type, (...args) => (Object.assign(Object.assign({}, config(...args)), { type,
-            httpStatus, tags: hasGlobalTag ? ['global', ...tags] : [...tags] })));
+        return defineType(type, (...args) => ({
+            ...config(...args),
+            type,
+            httpStatus,
+            tags: hasGlobalTag ? ['global', ...tags] : [...tags],
+        }));
     }
     const as = config ? config._as : 'empty';
     switch (as) {
@@ -204,15 +204,24 @@ function createTrackingAction(type, hasGlobalTag, tags, httpStatus, config) {
         case 'props':
             return defineType(type, 
             // eslint-disable-next-line @typescript-eslint/no-shadow
-            (props) => (Object.assign(Object.assign({}, props), { type,
-                httpStatus, tags: hasGlobalTag ? ['global', ...tags] : [...tags] })));
+            (props) => ({
+                ...props,
+                type,
+                httpStatus,
+                tags: hasGlobalTag ? ['global', ...tags] : [...tags],
+            }));
         default:
             throw new Error('Unexpected config.');
     }
 }
 function createTrackingFailureAction(type, hasGlobalTag, tags, httpStatus, config) {
     if (typeof config === 'function') {
-        return defineType(type, (err, fallbackMsg, ...args) => (Object.assign(Object.assign({ httpStatus: httpStatus(err, fallbackMsg) }, config(...args)), { type, tags: hasGlobalTag ? ['global', ...tags] : [...tags] })));
+        return defineType(type, (err, fallbackMsg, ...args) => ({
+            httpStatus: httpStatus(err, fallbackMsg),
+            ...config(...args),
+            type,
+            tags: hasGlobalTag ? ['global', ...tags] : [...tags],
+        }));
     }
     const as = config ? config._as : 'empty';
     switch (as) {
@@ -225,7 +234,12 @@ function createTrackingFailureAction(type, hasGlobalTag, tags, httpStatus, confi
         case 'props':
             return defineType(type, 
             // eslint-disable-next-line @typescript-eslint/no-shadow
-            (err, fallbackMsg, props) => (Object.assign(Object.assign({ httpStatus: httpStatus(err, fallbackMsg) }, props), { type, tags: hasGlobalTag ? ['global', ...tags] : [...tags] })));
+            (err, fallbackMsg, props) => ({
+                httpStatus: httpStatus(err, fallbackMsg),
+                ...props,
+                type,
+                tags: hasGlobalTag ? ['global', ...tags] : [...tags],
+            }));
         default:
             throw new Error('Unexpected config.');
     }
@@ -285,9 +299,9 @@ class HttpTrackingEffects {
         });
     }
 }
-HttpTrackingEffects.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: HttpTrackingEffects, deps: [{ token: i1$1.Actions }, { token: i1.Store }], target: i0.ɵɵFactoryTarget.Injectable });
-HttpTrackingEffects.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: HttpTrackingEffects, providedIn: 'root' });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: HttpTrackingEffects, decorators: [{
+HttpTrackingEffects.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingEffects, deps: [{ token: i1$1.Actions }, { token: i1.Store }], target: i0.ɵɵFactoryTarget.Injectable });
+HttpTrackingEffects.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingEffects, providedIn: 'root' });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingEffects, decorators: [{
             type: Injectable,
             args: [{
                     providedIn: 'root',
@@ -296,12 +310,12 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.3", ngImpor
 
 class NgrxHttpTrackingModule {
 }
-NgrxHttpTrackingModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: NgrxHttpTrackingModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-NgrxHttpTrackingModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.1.3", ngImport: i0, type: NgrxHttpTrackingModule, imports: [CommonModule, i1.StoreFeatureModule, i1$1.EffectsFeatureModule] });
-NgrxHttpTrackingModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: NgrxHttpTrackingModule, providers: [HttpTrackingFacade], imports: [CommonModule,
+NgrxHttpTrackingModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: NgrxHttpTrackingModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
+NgrxHttpTrackingModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.1.5", ngImport: i0, type: NgrxHttpTrackingModule, imports: [CommonModule, i1.StoreFeatureModule, i1$1.EffectsFeatureModule] });
+NgrxHttpTrackingModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: NgrxHttpTrackingModule, providers: [HttpTrackingFacade], imports: [CommonModule,
         StoreModule.forFeature(HTTP_TRACKING_FEATURE_KEY, httpTrackingReducer),
         EffectsModule.forFeature([HttpTrackingEffects])] });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: NgrxHttpTrackingModule, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: NgrxHttpTrackingModule, decorators: [{
             type: NgModule,
             args: [{
                     imports: [
@@ -322,4 +336,4 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.3", ngImpor
  */
 
 export { HttpTrackingFacade, HttpTrackingFacadeStub, NgrxHttpTrackingModule, createTrackingActions, createTrackingEffect };
-//# sourceMappingURL=ngrx-http-tracking.mjs.map
+//# sourceMappingURL=acandylevey-ngrx-http-tracking.mjs.map

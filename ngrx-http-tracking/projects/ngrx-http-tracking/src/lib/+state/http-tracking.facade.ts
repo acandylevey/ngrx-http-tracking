@@ -9,6 +9,7 @@ import { isError } from '../function/is-error';
 import { mapActionTypeToId } from '../function/map-action-typ-to-id';
 import { TrackingAction } from '../function/http-tracking-actions.factory';
 import { LoadingState } from '../model/loading-state';
+import { isDefined } from '../function/is-defined';
 
 export interface HttpTrackingResult<T1, T2> {
   action: TrackingAction<T1, T2>;
@@ -20,35 +21,39 @@ export interface HttpTrackingResult<T1, T2> {
 export class HttpTrackingFacade {
   constructor(private store: Store) {}
 
-  public getTracking(
-    action: Action
+  public getTracking<T1, T2>(
+    action: TrackingAction<T1, T2>
   ): Observable<HttpTrackingEntity | undefined> {
     return this.store.select(
       HttpTrackingSelectors.selectOneHttpTracking(
-        mapActionTypeToId(action.type)
+        mapActionTypeToId(action.loading.type)
       )
     );
   }
 
-  public isLoading<T>(action: Action): Observable<boolean> {
+  public isLoading<T1, T2>(
+    action: TrackingAction<T1, T2>
+  ): Observable<boolean> {
     return this.getTracking(action).pipe(
       map((x) => x?.httpStatus === LoadingState.LOADING)
     );
   }
 
-  public isLoaded<T>(action: Action): Observable<boolean> {
+  public isLoaded<T1, T2>(action: TrackingAction<T1, T2>): Observable<boolean> {
     return this.getTracking(action).pipe(
       map((x) => x?.httpStatus === LoadingState.LOADED)
     );
   }
 
-  public isInit<T>(action: Action): Observable<boolean> {
+  public isInit<T1, T2>(action: TrackingAction<T1, T2>): Observable<boolean> {
     return this.getTracking(action).pipe(
-      map((x) => !x || x.httpStatus === LoadingState.INIT)
+      map((x) => !isDefined(x) || x?.httpStatus === LoadingState.INIT)
     );
   }
 
-  public getError<T>(action: Action): Observable<string | null> {
+  public getError<T1, T2>(
+    action: TrackingAction<T1, T2>
+  ): Observable<string | null> {
     return this.getTracking(action).pipe(
       filter((x) => isError(x?.httpStatus)),
       map((x) => (<Error>x?.httpStatus).message)
@@ -98,7 +103,7 @@ export class HttpTrackingFacade {
   public getResolved<T1, T2>(
     action: TrackingAction<T1, T2>
   ): Observable<HttpTrackingResult<T1, T2>> {
-    return this.getTracking(action.loading).pipe(
+    return this.getTracking(action).pipe(
       filter((tracking) => !!tracking),
       map((tracking) => (<HttpTrackingEntity>tracking).httpStatus),
       filter(
