@@ -30,7 +30,9 @@ jobs:
         with:
           node-version: "16.x"
       - name: npm version
-        run: npm i -g npm@8.1
+        run: npm i -g npm@8.1        
+      - name: Change working directory
+        run: cd ngrx-http-tracking
       - name: npm install
         run: |
           sed -i "s/#{GITHUB_TAG_VERSION}#/${{ steps.tag-version.outputs.VERSION }}/g" /projects/ngrx-http-tracking/package.json
