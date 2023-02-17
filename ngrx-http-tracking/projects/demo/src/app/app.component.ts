@@ -27,24 +27,18 @@ export class AppComponent {
   };
 
   books = {
-    isLoaded$: this.httpTrackingFacade.isLoaded(
-      BooksActions.fetchBooks.loading
-    ),
-    isLoading$: this.httpTrackingFacade.isLoading(
-      BooksActions.fetchBooks.loading
-    ),
-    trackingData$: this.httpTrackingFacade.getTracking(
-      BooksActions.fetchBooks.loaded
-    ),
+    isLoaded$: this.httpTrackingFacade.isLoaded(BooksActions.fetchBooks),
+    isLoading$: this.httpTrackingFacade.isLoading(BooksActions.fetchBooks),
+    trackingData$: this.httpTrackingFacade.getTracking(BooksActions.fetchBooks),
     entities$: this.booksFacade.allBooks$,
   };
 
   chained = {
     businessStatus$: this.httpTrackingFacade
-      .getTracking(BusinessActions.fetchbusiness.loading)
+      .getTracking(BusinessActions.fetchbusiness)
       .pipe(map((x) => x?.httpStatus)),
     calendarStatus$: this.httpTrackingFacade
-      .getTracking(CalendarActions.fetchCalendars.loading)
+      .getTracking(CalendarActions.fetchCalendars)
       .pipe(map((x) => x?.httpStatus)),
   };
 

@@ -10,12 +10,12 @@ import * as i1 from "@ngrx/store";
 import * as i2 from "@ngrx/effects";
 export class NgrxHttpTrackingModule {
 }
-NgrxHttpTrackingModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: NgrxHttpTrackingModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-NgrxHttpTrackingModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.1.3", ngImport: i0, type: NgrxHttpTrackingModule, imports: [CommonModule, i1.StoreFeatureModule, i2.EffectsFeatureModule] });
-NgrxHttpTrackingModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: NgrxHttpTrackingModule, providers: [HttpTrackingFacade], imports: [CommonModule,
+NgrxHttpTrackingModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: NgrxHttpTrackingModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
+NgrxHttpTrackingModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.1.5", ngImport: i0, type: NgrxHttpTrackingModule, imports: [CommonModule, i1.StoreFeatureModule, i2.EffectsFeatureModule] });
+NgrxHttpTrackingModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: NgrxHttpTrackingModule, providers: [HttpTrackingFacade], imports: [CommonModule,
         StoreModule.forFeature(HTTP_TRACKING_FEATURE_KEY, httpTrackingReducer),
         EffectsModule.forFeature([HttpTrackingEffects])] });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: NgrxHttpTrackingModule, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: NgrxHttpTrackingModule, decorators: [{
             type: NgModule,
             args: [{
                     imports: [

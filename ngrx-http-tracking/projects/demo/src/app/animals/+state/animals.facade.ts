@@ -10,7 +10,7 @@ export class AnimalsFacade {
    * Combine pieces of state using createSelector,
    * and expose them as observables through the facade.
    */
-  loaded$ = this.httpTracker.isLoaded(AnimalsActions.fetchAnimals.loaded);
+  loaded$ = this.httpTracker.isLoaded(AnimalsActions.fetchAnimals);
   allAnimals$ = this.store.pipe(select(AnimalsSelectors.getAllAnimals));
   selectedAnimals$ = this.store.pipe(select(AnimalsSelectors.getSelected));
 

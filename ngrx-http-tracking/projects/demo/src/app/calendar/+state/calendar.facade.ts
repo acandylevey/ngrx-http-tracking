@@ -10,7 +10,7 @@ export class CalendarFacade {
    * Combine pieces of state using createSelector,
    * and expose them as observables through the facade.
    */
-  loaded$ = this.httpTracker.isLoaded(CalendarActions.fetchCalendars.loaded);
+  loaded$ = this.httpTracker.isLoaded(CalendarActions.fetchCalendars);
   allCalendar$ = this.store.pipe(select(CalendarSelectors.getAllCalendar));
   selectedCalendar$ = this.store.pipe(select(CalendarSelectors.getSelected));
 

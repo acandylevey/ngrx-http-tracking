@@ -30,9 +30,9 @@ export class HttpTrackingEffects {
         });
     }
 }
-HttpTrackingEffects.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: HttpTrackingEffects, deps: [{ token: i1.Actions }, { token: i2.Store }], target: i0.ɵɵFactoryTarget.Injectable });
-HttpTrackingEffects.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: HttpTrackingEffects, providedIn: 'root' });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.3", ngImport: i0, type: HttpTrackingEffects, decorators: [{
+HttpTrackingEffects.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingEffects, deps: [{ token: i1.Actions }, { token: i2.Store }], target: i0.ɵɵFactoryTarget.Injectable });
+HttpTrackingEffects.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingEffects, providedIn: 'root' });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingEffects, decorators: [{
             type: Injectable,
             args: [{
                     providedIn: 'root',
