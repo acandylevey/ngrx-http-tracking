@@ -1,5 +1,5 @@
 # NgRx Http Tracking
-
+[![Npm Published](https://github.com/acandylevey/ngrx-http-tracking/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/acandylevey/ngrx-http-tracking/actions/workflows/npm-publish.yml)
 [Checkout the demo](https://acandylevey.github.io/ngrx-http-tracking/)
 
 This NgRx library is aims to slot into your pre-existing NgRx stores to reduce the amount of boiler plate code you need to write and to make handling the loading, success and error states of HTTP Requests significantly easier.
