@@ -33,10 +33,10 @@ jobs:
         run: npm i -g npm@8.1        
       - name: npm install
         run: |
-          ls
+          echo "Changing Directory to ngrx-http-tracking"
           cd ngrx-http-tracking
           ls
-          sed -i "s/#{GITHUB_TAG_VERSION}#/${{ steps.tag-version.outputs.VERSION }}/g" /projects/ngrx-http-tracking/package.json
+          sed -i "s/#{GITHUB_TAG_VERSION}#/${{ steps.tag-version.outputs.VERSION }}/g" projects/ngrx-http-tracking/package.json
           sed -i "s/#{GITHUB_TAG_VERSION}#/${{ steps.tag-version.outputs.VERSION }}/g" package.json
           npm install
       - name: npm build & publish
