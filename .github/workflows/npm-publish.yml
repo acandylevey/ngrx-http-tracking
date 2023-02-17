@@ -31,12 +31,10 @@ jobs:
           node-version: "16.x"
       - name: npm version
         run: npm i -g npm@8.1        
-      - name: Change working directory
-        run: cd ngrx-http-tracking
       - name: npm install
         run: |
-          sed -i "s/#{GITHUB_TAG_VERSION}#/${{ steps.tag-version.outputs.VERSION }}/g" /projects/ngrx-http-tracking/package.json
-          sed -i "s/#{GITHUB_TAG_VERSION}#/${{ steps.tag-version.outputs.VERSION }}/g" package.json
+          sed -i "s/#{GITHUB_TAG_VERSION}#/${{ steps.tag-version.outputs.VERSION }}/g" ngrx-http-tracking/projects/ngrx-http-tracking/package.json
+          sed -i "s/#{GITHUB_TAG_VERSION}#/${{ steps.tag-version.outputs.VERSION }}/g" ngrx-http-tracking/package.json
           npm install
       - name: npm build & publish
         run: npm run publish:ngrx-http-tracking
