@@ -47,10 +47,10 @@ class HttpTrackingFacadeStub {
     getResolved(action) {
         return of();
     }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.1", ngImport: i0, type: HttpTrackingFacadeStub, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.1.1", ngImport: i0, type: HttpTrackingFacadeStub }); }
 }
-HttpTrackingFacadeStub.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingFacadeStub, deps: [], target: i0.ɵɵFactoryTarget.Injectable });
-HttpTrackingFacadeStub.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingFacadeStub });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingFacadeStub, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.1", ngImport: i0, type: HttpTrackingFacadeStub, decorators: [{
             type: Injectable
         }] });
 
@@ -165,10 +165,10 @@ class HttpTrackingFacade {
         const results = actions.map((a) => this.getResolved(a));
         return forkJoin(results);
     }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.1", ngImport: i0, type: HttpTrackingFacade, deps: [{ token: i1.Store }], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.1.1", ngImport: i0, type: HttpTrackingFacade }); }
 }
-HttpTrackingFacade.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingFacade, deps: [{ token: i1.Store }], target: i0.ɵɵFactoryTarget.Injectable });
-HttpTrackingFacade.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingFacade });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingFacade, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.1", ngImport: i0, type: HttpTrackingFacade, decorators: [{
             type: Injectable
         }], ctorParameters: function () { return [{ type: i1.Store }]; } });
 
@@ -298,10 +298,10 @@ class HttpTrackingEffects {
             dispatch: false,
         });
     }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.1", ngImport: i0, type: HttpTrackingEffects, deps: [{ token: i1$1.Actions }, { token: i1.Store }], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.1.1", ngImport: i0, type: HttpTrackingEffects, providedIn: 'root' }); }
 }
-HttpTrackingEffects.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingEffects, deps: [{ token: i1$1.Actions }, { token: i1.Store }], target: i0.ɵɵFactoryTarget.Injectable });
-HttpTrackingEffects.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingEffects, providedIn: 'root' });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: HttpTrackingEffects, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.1", ngImport: i0, type: HttpTrackingEffects, decorators: [{
             type: Injectable,
             args: [{
                     providedIn: 'root',
@@ -309,13 +309,13 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.5", ngImpor
         }], ctorParameters: function () { return [{ type: i1$1.Actions }, { type: i1.Store }]; } });
 
 class NgrxHttpTrackingModule {
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.1", ngImport: i0, type: NgrxHttpTrackingModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
+    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "16.1.1", ngImport: i0, type: NgrxHttpTrackingModule, imports: [CommonModule, i1.StoreFeatureModule, i1$1.EffectsFeatureModule] }); }
+    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "16.1.1", ngImport: i0, type: NgrxHttpTrackingModule, providers: [HttpTrackingFacade], imports: [CommonModule,
+            StoreModule.forFeature(HTTP_TRACKING_FEATURE_KEY, httpTrackingReducer),
+            EffectsModule.forFeature([HttpTrackingEffects])] }); }
 }
-NgrxHttpTrackingModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: NgrxHttpTrackingModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-NgrxHttpTrackingModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.1.5", ngImport: i0, type: NgrxHttpTrackingModule, imports: [CommonModule, i1.StoreFeatureModule, i1$1.EffectsFeatureModule] });
-NgrxHttpTrackingModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: NgrxHttpTrackingModule, providers: [HttpTrackingFacade], imports: [CommonModule,
-        StoreModule.forFeature(HTTP_TRACKING_FEATURE_KEY, httpTrackingReducer),
-        EffectsModule.forFeature([HttpTrackingEffects])] });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.1.5", ngImport: i0, type: NgrxHttpTrackingModule, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.1", ngImport: i0, type: NgrxHttpTrackingModule, decorators: [{
             type: NgModule,
             args: [{
                     imports: [
