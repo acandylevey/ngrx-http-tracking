@@ -9,16 +9,13 @@ import { AnimalsEffects } from './+state/animals.effects';
 import { AnimalsFacade } from './+state/animals.facade';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    StoreModule.forFeature(
-      fromAnimals.ANIMALS_FEATURE_KEY,
-      fromAnimals.reducer
-    ),
-    EffectsModule.forFeature([AnimalsEffects]),
-  ],
-  providers: [AnimalsFacade, AnimalsApiService],
+    declarations: [],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        StoreModule.forFeature(fromAnimals.ANIMALS_FEATURE_KEY, fromAnimals.reducer),
+        EffectsModule.forFeature([AnimalsEffects]),
+    ],
+    providers: [AnimalsFacade, AnimalsApiService],
 })
 export class AnimalsModule {}

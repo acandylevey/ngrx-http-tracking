@@ -4,11 +4,6 @@ import { CalendarEntity } from './calendar.models';
 
 const CALENDAR_NAMESPACE = 'calendar';
 
-export const fetchCalendars = createTrackingActions<void, CalendarEntity[]>(
-  CALENDAR_NAMESPACE,
-  'fetchCalendars'
-);
+export const fetchCalendars = createTrackingActions<void, CalendarEntity[]>(CALENDAR_NAMESPACE, 'fetchCalendars');
 
-export const clearCalendars = createAction(
-  `[${CALENDAR_NAMESPACE}] clearCalendars`
-);
+export const clearCalendars = createAction(`[${CALENDAR_NAMESPACE}] clearCalendars`);

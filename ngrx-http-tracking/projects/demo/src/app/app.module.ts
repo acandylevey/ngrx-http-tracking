@@ -12,28 +12,28 @@ import { CalendarModule } from './calendar/calendar.module';
 import { NgrxHttpTrackingModule } from 'ngrx-http-tracking';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    NgrxHttpTrackingModule,
-    BrowserModule,
-    StoreModule.forRoot(
-      {},
-      {
-        metaReducers: !environment.production ? [] : [],
-        runtimeChecks: {
-          strictActionImmutability: true,
-          strictStateImmutability: true,
-        },
-      }
-    ),
-    EffectsModule.forRoot([]),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    AnimalsModule,
-    BooksModule,
-    CalendarModule,
-    BusinessModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [
+        NgrxHttpTrackingModule,
+        BrowserModule,
+        StoreModule.forRoot(
+            {},
+            {
+                metaReducers: !environment.production ? [] : [],
+                runtimeChecks: {
+                    strictActionImmutability: true,
+                    strictStateImmutability: true,
+                },
+            }
+        ),
+        EffectsModule.forRoot([]),
+        !environment.production ? StoreDevtoolsModule.instrument() : [],
+        AnimalsModule,
+        BooksModule,
+        CalendarModule,
+        BusinessModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

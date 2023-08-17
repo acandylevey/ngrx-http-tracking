@@ -6,20 +6,17 @@ import * as BusinessActions from './business.actions';
 
 @Injectable()
 export class BusinessEffects {
-  fetchBusiness$ = createTrackingEffect(
-    this.actions$,
-    BusinessActions.fetchbusiness,
-    this.api.fetchBusiness,
-    'Coulld not load business',
-    (context) => {
-      console.log('Businesses Successfully loaded');
-      console.log('Request: ', context.request);
-      console.log('Payload: ', context.payload);
-    }
-  );
+    fetchBusiness$ = createTrackingEffect(
+        this.actions$,
+        BusinessActions.fetchbusiness,
+        this.api.fetchBusiness,
+        'Coulld not load business',
+        context => {
+            console.log('Businesses Successfully loaded');
+            console.log('Request: ', context.request);
+            console.log('Payload: ', context.payload);
+        }
+    );
 
-  constructor(
-    private readonly actions$: Actions,
-    private api: BusinessApiService
-  ) {}
+    constructor(private readonly actions$: Actions, private api: BusinessApiService) {}
 }
