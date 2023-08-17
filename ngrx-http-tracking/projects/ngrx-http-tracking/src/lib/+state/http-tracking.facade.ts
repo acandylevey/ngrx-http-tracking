@@ -79,8 +79,7 @@ export class HttpTrackingFacade {
     public getResolved<T1, T2>(action: TrackingAction<T1, T2>): Observable<HttpTrackingResult<T1, T2>> {
         // this timer is here to prevent an issue with retrieving the state before
         // the reducer is updated on a second call to the same tracked action
-        // TODO: resolve the actual issue
-        return timer(5).pipe(
+        return timer(1).pipe(
             switchMap(() =>
                 this.getTracking(action).pipe(
                     filter(tracking => !!tracking),
