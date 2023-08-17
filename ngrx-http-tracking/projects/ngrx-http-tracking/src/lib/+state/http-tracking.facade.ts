@@ -2,9 +2,9 @@ import * as HttpTrackingActions from './http-tracking.actions';
 import * as HttpTrackingSelectors from './http-tracking.selectors';
 import { Action, Store } from '@ngrx/store';
 import { HttpTrackingEntity } from '../model/http-tracking-entity';
-import { debounceTime, filter, map, take } from 'rxjs/operators';
+import { debounceTime, filter, map, switchMap, take } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin, Observable, timer } from 'rxjs';
 import { isError } from '../function/is-error';
 import { mapActionTypeToId } from '../function/map-action-typ-to-id';
 import { TrackingAction } from '../function/http-tracking-actions.factory';
@@ -77,21 +77,27 @@ export class HttpTrackingFacade {
     }
 
     public getResolved<T1, T2>(action: TrackingAction<T1, T2>): Observable<HttpTrackingResult<T1, T2>> {
-        return this.getTracking(action).pipe(
-            filter(tracking => !!tracking),
-            map(tracking => (<HttpTrackingEntity>tracking).httpStatus),
-            filter(httpStatus => httpStatus === LoadingState.LOADED || isError(httpStatus)),
-            take(1),
-            map(httpStatus => {
-                const retVal = <HttpTrackingResult<T1, T2>>{
-                    action,
-                    success: httpStatus === LoadingState.LOADED,
-                };
-                if (isError(httpStatus)) {
-                    retVal.error = httpStatus;
-                }
-                return retVal;
-            })
+        // this timer is here to prevent an issue with retrieving the state before
+        // the reducer is updated on a second call to the same tracked action
+        return timer(1).pipe(
+            switchMap(() =>
+                this.getTracking(action).pipe(
+                    filter(tracking => !!tracking),
+                    map(tracking => (<HttpTrackingEntity>tracking).httpStatus),
+                    filter(httpStatus => httpStatus === LoadingState.LOADED || isError(httpStatus)),
+                    take(1),
+                    map(httpStatus => {
+                        const retVal = <HttpTrackingResult<T1, T2>>{
+                            action,
+                            success: httpStatus === LoadingState.LOADED,
+                        };
+                        if (isError(httpStatus)) {
+                            retVal.error = httpStatus;
+                        }
+                        return retVal;
+                    })
+                )
+            )
         );
     }
 
