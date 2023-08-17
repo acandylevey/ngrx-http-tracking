@@ -10,14 +10,14 @@ import { BooksFacade } from './+state/books.facade';
 import * as fromBooks from './+state/books.reducer';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    BrowserModule,
-    StoreModule.forFeature(fromBooks.BOOKS_FEATURE_KEY, fromBooks.reducer),
-    EffectsModule.forFeature([BooksEffects]),
-  ],
-  providers: [BooksFacade, BooksApiService],
+    declarations: [],
+    imports: [
+        CommonModule,
+        HttpClientModule,
+        BrowserModule,
+        StoreModule.forFeature(fromBooks.BOOKS_FEATURE_KEY, fromBooks.reducer),
+        EffectsModule.forFeature([BooksEffects]),
+    ],
+    providers: [BooksFacade, BooksApiService],
 })
 export class BooksModule {}

@@ -5,19 +5,15 @@ import { AnimalApiResponse } from './animals.models';
 
 @Injectable()
 export class AnimalsApiService {
-  constructor(public http: HttpClient) {
-    console.log(http);
-    console.log(this);
-  }
+    constructor(public http: HttpClient) {
+        console.log(http);
+        console.log(this);
+    }
 
-  public fetchAnimals = () => {
-    return this.http
-      .get<AnimalApiResponse>(
-        'https://api.publicapis.org/entries?category=animals&https=true'
-      )
-      .pipe(
-        map((response) => response.entries),
-        delay(200) // .2 Second delay for simulation
-      );
-  };
+    public fetchAnimals = () => {
+        return this.http.get<AnimalApiResponse>('https://api.publicapis.org/entries?category=animals&https=true').pipe(
+            map(response => response.entries),
+            delay(200) // .2 Second delay for simulation
+        );
+    };
 }

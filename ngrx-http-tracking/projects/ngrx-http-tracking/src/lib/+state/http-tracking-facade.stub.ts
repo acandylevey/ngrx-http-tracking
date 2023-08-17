@@ -11,43 +11,43 @@ interface HttpTrackingResult<T1, T2> {}
 
 @Injectable()
 export class HttpTrackingFacadeStub {
-  public getTracking(action: any) {
-    return of<HttpTrackingEntity>({
-      httpStatus: LoadingState.INIT,
-      action: '[fake] action 123',
-      tags: action['tags'],
-    });
-  }
+    public getTracking(action: any) {
+        return of<HttpTrackingEntity>({
+            httpStatus: LoadingState.INIT,
+            action: '[fake] action 123',
+            tags: action['tags'],
+        });
+    }
 
-  public isLoading<T>(action: Action) {
-    return of<boolean>(false);
-  }
+    public isLoading<T>(action: Action) {
+        return of<boolean>(false);
+    }
 
-  public isLoaded<T>(action: Action) {
-    return of<boolean>(true);
-  }
+    public isLoaded<T>(action: Action) {
+        return of<boolean>(true);
+    }
 
-  public isInit<T>(action: Action): Observable<boolean> {
-    return of<boolean>(false);
-  }
+    public isInit<T>(action: Action): Observable<boolean> {
+        return of<boolean>(false);
+    }
 
-  public getError<T>(action: Action): Observable<string | null> {
-    return of(null);
-  }
+    public getError<T>(action: Action): Observable<string | null> {
+        return of(null);
+    }
 
-  public clearGloballyHandledErrors() {}
+    public clearGloballyHandledErrors() {}
 
-  public clearTrackingMulti(actions: Action[]) {}
+    public clearTrackingMulti(actions: Action[]) {}
 
-  public getGlobalLoading() {
-    return of<boolean>(false);
-  }
+    public getGlobalLoading() {
+        return of<boolean>(false);
+    }
 
-  public getGlobalErrors() {
-    return of<Error[]>([]);
-  }
+    public getGlobalErrors() {
+        return of<Error[]>([]);
+    }
 
-  public getResolved<T1, T2>(action: TrackingAction<T1, T2>) {
-    return of<HttpTrackingResult<T1, T2>>();
-  }
+    public getResolved<T1, T2>(action: TrackingAction<T1, T2>) {
+        return of<HttpTrackingResult<T1, T2>>();
+    }
 }
