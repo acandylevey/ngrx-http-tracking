@@ -162,14 +162,14 @@ export const createTrackingActions = <TRequest, TPayload>(
         props<{ request: TRequest }>()
     ),
     loaded: createTrackingAction(
-        `[${namespace}] ${actionName}Success`,
+        `[${namespace}] ${actionName} Success`,
         hasGlobalTag,
         tags,
         LoadingState.LOADED,
         props<{ payload: TPayload }>()
     ),
     failure: createTrackingFailureAction(
-        `[${namespace}] ${actionName}Failure`,
+        `[${namespace}] ${actionName} Failure`,
         hasGlobalTag,
         tags,
         convertResponseToError
