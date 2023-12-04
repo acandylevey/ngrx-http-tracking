@@ -28,7 +28,7 @@ jobs:
       - name: NodeJs version
         uses: actions/setup-node@v3
         with:
-          node-version: "16.x"
+          node-version: "20.0.10"
       - name: npm version
         run: npm i -g npm@8.1        
       - name: npm install
