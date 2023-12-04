@@ -27,7 +27,7 @@ import { NgrxHttpTrackingModule } from 'ngrx-http-tracking';
             }
         ),
         EffectsModule.forRoot([]),
-        !environment.production ? StoreDevtoolsModule.instrument() : [],
+        !environment.production ? StoreDevtoolsModule.instrument({connectInZone: true}) : [],
         AnimalsModule,
         BooksModule,
         CalendarModule,
