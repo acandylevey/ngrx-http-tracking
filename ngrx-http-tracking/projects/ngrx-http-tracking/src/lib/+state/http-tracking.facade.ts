@@ -17,7 +17,9 @@ export interface HttpTrackingResult<T1, T2> {
     error?: Error;
 }
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class HttpTrackingFacade {
     constructor(private store: Store) {}
 
