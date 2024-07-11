@@ -2,7 +2,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action, ActionCreator, Creator, props } from '@ngrx/store';
 import { ActionCreatorProps, FunctionWithParametersType, NotAllowedCheck, TypedAction } from '@ngrx/store/src/models';
 import { Observable, of, Subject } from 'rxjs';
-import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, exhaustMap, map, switchMap, take, tap } from 'rxjs/operators';
 import { HttpTrackingEntity } from '../model/http-tracking-entity';
 import { LoadingState } from '../model/loading-state';
 import { convertResponseToError } from './convert-response-to-error';
@@ -220,3 +220,44 @@ export const createTrackingEffect = <TRequest, TPayload>(
             )
         )
     );
+
+export const createTrackingEffectExhaustMap = <TRequest, TPayload>(
+    actions$: Actions,
+    tackingAction: TrackingAction<TRequest, TPayload>,
+    serviceCall: (request: TRequest) => Observable<TPayload>,
+    fallbackErrorMsg: string,
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    successFn: (httpContext: { request: TRequest; payload: TPayload }) => void = httpContext => {}
+) =>
+    createEffect(() =>
+        actions$.pipe(
+            ofType(tackingAction.loading),
+            exhaustMap(action =>
+                serviceCall(action.request).pipe(
+                    map(payload => tackingAction.loaded({ payload })),
+                    take(1), // without this take(1) the inner observable will never complete cancelling all subsequent requests
+                    tap(successAction =>
+                        successFn({
+                            request: action.request,
+                            payload: successAction.payload,
+                        })
+                    ),
+                    catchError(e => {
+                        console.error(e);
+                        const subjectMsg = new Subject<Action>();
+
+                        if (e.error instanceof Blob && e.error.type === 'application/json') {
+                            e.error.text().then((errorBlobText: string) => {
+                                const errorJson = JSON.parse(errorBlobText);
+                                subjectMsg.next(tackingAction.failure(e, errorJson.error));
+                            });
+                        } else {
+                            return of(tackingAction.failure(e, fallbackErrorMsg));
+                        }
+                        return subjectMsg;
+                    })
+                )
+            )
+        )
+    );
+
