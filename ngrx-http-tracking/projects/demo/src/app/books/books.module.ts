@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
@@ -13,11 +13,10 @@ import * as fromBooks from './+state/books.reducer';
     declarations: [],
     imports: [
         CommonModule,
-        HttpClientModule,
         BrowserModule,
         StoreModule.forFeature(fromBooks.BOOKS_FEATURE_KEY, fromBooks.reducer),
         EffectsModule.forFeature([BooksEffects]),
     ],
-    providers: [BooksFacade, BooksApiService],
+    providers: [BooksFacade, BooksApiService, provideHttpClient(withInterceptorsFromDi())],
 })
 export class BooksModule {}
