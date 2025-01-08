@@ -13,6 +13,7 @@ import { CalendarFacade } from './calendar/+state/calendar.facade';
     selector: 'acandylevey-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
+    standalone: false
 })
 export class AppComponent {
     title = 'http-tracking-demo';
