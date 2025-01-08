@@ -1,6 +1,6 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action, ActionCreator, Creator, props } from '@ngrx/store';
-import { ActionCreatorProps, FunctionWithParametersType, NotAllowedCheck, TypedAction } from '@ngrx/store/src/models';
+import { ActionCreatorProps, FunctionWithParametersType, NotAllowedCheck } from '@ngrx/store/src/models';
 import { Observable, of, Subject } from 'rxjs';
 import { catchError, exhaustMap, map, switchMap, take, tap } from 'rxjs/operators';
 import { HttpTrackingEntity } from '../model/http-tracking-entity';
@@ -12,7 +12,7 @@ function createTrackingAction<T extends string>(
     hasGlobalTag: boolean,
     tags: string[],
     httpStatus: LoadingState
-): ActionCreator<T, () => TypedAction<T>>;
+): ActionCreator<T, () => Action<T>>;
 
 function createTrackingAction<T extends string, P extends object>(
     type: T,
@@ -20,7 +20,7 @@ function createTrackingAction<T extends string, P extends object>(
     tags: string[],
     httpStatus: LoadingState,
     config: ActionCreatorProps<P> | null
-): ActionCreator<T, (props?: P) => P & TypedAction<T>>;
+): ActionCreator<T, (props?: P) => P & Action<T>>;
 
 function createTrackingAction<T extends string, P extends any[], R extends object>(
     type: T,
@@ -28,7 +28,7 @@ function createTrackingAction<T extends string, P extends any[], R extends objec
     tags: string[],
     httpStatus: LoadingState,
     creator: Creator<P, R> & NotAllowedCheck<R>
-): FunctionWithParametersType<P, R & TypedAction<T>> & TypedAction<T>;
+): FunctionWithParametersType<P, R & Action<T>> & Action<T>;
 
 function createTrackingAction<T extends string, C extends Creator>(
     type: T,
@@ -41,7 +41,7 @@ function createTrackingAction<T extends string, C extends Creator>(
         return defineType(
             type,
             (...args: any[]) =>
-                <HttpTrackingEntity & TypedAction<T>>{
+                <HttpTrackingEntity & Action<T>>{
                     ...config(...args),
                     type,
                     httpStatus,
@@ -55,7 +55,7 @@ function createTrackingAction<T extends string, C extends Creator>(
             return defineType(
                 type,
                 () =>
-                    <HttpTrackingEntity & TypedAction<T>>{
+                    <HttpTrackingEntity & Action<T>>{
                         type,
                         httpStatus,
                         tags: hasGlobalTag ? ['global', ...tags] : [...tags],
@@ -66,7 +66,7 @@ function createTrackingAction<T extends string, C extends Creator>(
                 type,
                 // eslint-disable-next-line @typescript-eslint/no-shadow
                 (props: object) =>
-                    <HttpTrackingEntity & TypedAction<T>>{
+                    <HttpTrackingEntity & Action<T>>{
                         ...props,
                         type,
                         httpStatus,
@@ -83,7 +83,7 @@ function createTrackingFailureAction<T extends string, err extends any, fallback
     hasGlobalTag: boolean,
     tags: string[],
     httpStatus: (err: any, fallbackMsg: string) => Error
-): ActionCreator<T, (err: any, fallbackMsg: string) => TypedAction<T>>;
+): ActionCreator<T, (err: any, fallbackMsg: string) => Action<T>>;
 
 function createTrackingFailureAction<T extends string, err extends any, fallbackMsg extends string, P extends object>(
     type: T,
@@ -91,7 +91,7 @@ function createTrackingFailureAction<T extends string, err extends any, fallback
     tags: string[],
     httpStatus: (err: any, fallbackMsg: string) => Error,
     config: ActionCreatorProps<P> & NotAllowedCheck<P>
-): ActionCreator<T, (err: any, fallbackMsg: string, props: P & NotAllowedCheck<P>) => P & TypedAction<T>>;
+): ActionCreator<T, (err: any, fallbackMsg: string, props: P & NotAllowedCheck<P>) => P & Action<T>>;
 
 function createTrackingFailureAction<T extends string, C extends Creator>(
     type: T,
@@ -104,7 +104,7 @@ function createTrackingFailureAction<T extends string, C extends Creator>(
         return defineType(
             type,
             (err: any, fallbackMsg: string, ...args: any[]) =>
-                <HttpTrackingEntity & TypedAction<T>>{
+                <HttpTrackingEntity & Action<T>>{
                     httpStatus: httpStatus(err, fallbackMsg),
                     ...config(...args),
                     type,
@@ -118,7 +118,7 @@ function createTrackingFailureAction<T extends string, C extends Creator>(
             return defineType(
                 type,
                 (err: any, fallbackMsg: string) =>
-                    <HttpTrackingEntity & TypedAction<T>>{
+                    <HttpTrackingEntity & Action<T>>{
                         httpStatus: httpStatus(err, fallbackMsg),
                         type,
                         tags: hasGlobalTag ? ['global', ...tags] : [...tags],
@@ -129,7 +129,7 @@ function createTrackingFailureAction<T extends string, C extends Creator>(
                 type,
                 // eslint-disable-next-line @typescript-eslint/no-shadow
                 (err: any, fallbackMsg: string, props: object) =>
-                    <HttpTrackingEntity & TypedAction<T>>{
+                    <HttpTrackingEntity & Action<T>>{
                         httpStatus: httpStatus(err, fallbackMsg),
                         ...props,
                         type,
@@ -177,9 +177,9 @@ export const createTrackingActions = <TRequest, TPayload>(
 });
 
 export interface TrackingAction<TRequest, TPayload> {
-    loading: ((attr?: { request: TRequest }) => { request: TRequest } & TypedAction<string>) & TypedAction<string>;
-    loaded: ((attr?: { payload: TPayload }) => { payload: TPayload } & TypedAction<string>) & TypedAction<string>;
-    failure: ActionCreator<string, (httpStatus: Error, fallbackErrorMsg: string) => TypedAction<string>>;
+    loading: ((attr?: { request: TRequest }) => { request: TRequest } & Action<string>) & Action<string>;
+    loaded: ((attr?: { payload: TPayload }) => { payload: TPayload } & Action<string>) & Action<string>;
+    failure: ActionCreator<string, (httpStatus: Error, fallbackErrorMsg: string) => Action<string>>;
 }
 
 export const createTrackingEffect = <TRequest, TPayload>(
