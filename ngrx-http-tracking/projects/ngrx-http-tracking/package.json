@@ -2,8 +2,8 @@
   "name": "@acandylevey/ngrx-http-tracking",
   "version": "#{GITHUB_TAG_VERSION}#",
   "peerDependencies": {
-    "@angular/common": "^19.0.5",
-    "@angular/core": "^19.0.5"
+    "@angular/common": ">=20.0.0",
+    "@angular/core": ">=20.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
