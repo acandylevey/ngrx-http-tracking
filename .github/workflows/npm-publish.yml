@@ -13,7 +13,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: "20.10.0"
+          node-version: "22.12.x"
           registry-url: "https://registry.npmjs.org/"
       - name: Get version from tag
         id: tag-name
@@ -28,7 +28,7 @@ jobs:
       - name: NodeJs version
         uses: actions/setup-node@v3
         with:
-          node-version: "20.10.0"
+          node-version: "22.12.x"
       - name: npm version
         run: npm i -g npm@8.1        
       - name: npm install
