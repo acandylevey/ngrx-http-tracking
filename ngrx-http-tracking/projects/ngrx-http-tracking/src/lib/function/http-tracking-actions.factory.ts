@@ -1,6 +1,5 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Action, ActionCreator, Creator, props } from '@ngrx/store';
-import { ActionCreatorProps, FunctionWithParametersType, NotAllowedCheck } from '@ngrx/store/src/models';
+import { Action, ActionCreator, ActionCreatorProps, Creator, FunctionWithParametersType, NotAllowedCheck, props } from '@ngrx/store';
 import { Observable, of, Subject } from 'rxjs';
 import { catchError, exhaustMap, map, switchMap, take, tap } from 'rxjs/operators';
 import { HttpTrackingEntity } from '../model/http-tracking-entity';
