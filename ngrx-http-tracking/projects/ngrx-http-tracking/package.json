@@ -1,7 +1,10 @@
 {
   "name": "@acandylevey/ngrx-http-tracking",
   "version": "#{GITHUB_TAG_VERSION}#",
-   "peerDependencies": {
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
     "@angular/common": ">=21.0.0",
     "@angular/core": ">=21.0.0"
   },
