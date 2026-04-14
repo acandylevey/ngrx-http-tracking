@@ -2,7 +2,7 @@ import * as HttpTrackingActions from './http-tracking.actions';
 import * as HttpTrackingSelectors from './http-tracking.selectors';
 import { Action, Store } from '@ngrx/store';
 import { HttpTrackingEntity } from '../model/http-tracking-entity';
-import { debounceTime, filter, map, switchMap, take } from 'rxjs/operators';
+import { debounceTime, filter, map, skipWhile, take } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { forkJoin, Observable, timer } from 'rxjs';
 import { isError } from '../function/is-error';
@@ -78,30 +78,30 @@ export class HttpTrackingFacade {
         return this.store.select(HttpTrackingSelectors.selectErrorsByTag('global')).pipe(debounceTime(300));
     }
 
-    public getResolved<T1, T2>(action: TrackingAction<T1, T2>): Observable<HttpTrackingResult<T1, T2>> {
-        // this timer is here to prevent an issue with retrieving the state before
-        // the reducer is updated on a second call to the same tracked action
-        return timer(1).pipe(
-            switchMap(() =>
-                this.getTracking(action).pipe(
-                    filter(tracking => !!tracking),
-                    map(tracking => (<HttpTrackingEntity>tracking).httpStatus),
-                    filter(httpStatus => httpStatus === LoadingState.LOADED || isError(httpStatus)),
-                    take(1),
-                    map(httpStatus => {
-                        const retVal = <HttpTrackingResult<T1, T2>>{
-                            action,
-                            success: httpStatus === LoadingState.LOADED,
-                        };
-                        if (isError(httpStatus)) {
-                            retVal.error = httpStatus;
-                        }
-                        return retVal;
-                    })
-                )
-            )
-        );
-    }
+  public getResolved<T1, T2>(action: TrackingAction<T1, T2>): Observable<HttpTrackingResult<T1, T2>> {
+    return this.getTracking(action).pipe(
+      // Step 1: Filter out the "stale" state from previous calls.
+      // We only care about the transition that happens *after* we call this method.
+      // If the current status is LOADED or ERROR when we start, we do not want to know about it.
+      skipWhile(tracking => tracking?.httpStatus === LoadingState.LOADED || isError(tracking?.httpStatus)),
+
+      // Step 2: Now wait for it to reach a final state (LOADED or ERROR).
+      filter(tracking => !!tracking),
+      map(tracking => (<HttpTrackingEntity>tracking).httpStatus),
+      filter(httpStatus => httpStatus === LoadingState.LOADED || isError(httpStatus)),
+      take(1),
+      map(httpStatus => {
+        const retVal = <HttpTrackingResult<T1, T2>>{
+          action,
+          success: httpStatus === LoadingState.LOADED,
+        };
+        if (isError(httpStatus)) {
+          retVal.error = httpStatus;
+        }
+        return retVal;
+      })
+    );
+  }
 
     public getMultiResolved<T1, T2>(actions: TrackingAction<T1, T2>[]): Observable<HttpTrackingResult<T1, T2>[]> {
         const results = actions.map(a => this.getResolved(a));
