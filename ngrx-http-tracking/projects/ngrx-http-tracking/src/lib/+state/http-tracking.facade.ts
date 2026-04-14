@@ -4,7 +4,7 @@ import { Action, Store } from '@ngrx/store';
 import { HttpTrackingEntity } from '../model/http-tracking-entity';
 import { debounceTime, filter, map, skipWhile, take } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { forkJoin, Observable, timer } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { isError } from '../function/is-error';
 import { mapActionTypeToId } from '../function/map-action-typ-to-id';
 import { TrackingAction } from '../function/http-tracking-actions.factory';
