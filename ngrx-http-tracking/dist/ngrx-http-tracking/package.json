@@ -1,24 +1,25 @@
 {
   "name": "@acandylevey/ngrx-http-tracking",
   "version": "#{GITHUB_TAG_VERSION}#",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
-    "@angular/common": "^16.1.1",
-    "@angular/core": "^16.1.1"
+    "@angular/common": ">=21.0.0",
+    "@angular/core": ">=21.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
   "sideEffects": false,
   "module": "fesm2022/acandylevey-ngrx-http-tracking.mjs",
-  "typings": "index.d.ts",
+  "typings": "types/acandylevey-ngrx-http-tracking.d.ts",
   "exports": {
     "./package.json": {
       "default": "./package.json"
     },
     ".": {
-      "types": "./index.d.ts",
-      "esm2022": "./esm2022/acandylevey-ngrx-http-tracking.mjs",
-      "esm": "./esm2022/acandylevey-ngrx-http-tracking.mjs",
+      "types": "./types/acandylevey-ngrx-http-tracking.d.ts",
       "default": "./fesm2022/acandylevey-ngrx-http-tracking.mjs"
     }
   }
